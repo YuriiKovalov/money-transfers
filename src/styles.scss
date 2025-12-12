@@ -1,3 +1,50 @@
 @import "tailwindcss";
 
+@theme {
+  /* Primary color - main brand color */
+  --color-primary: #1C40BE;
+  --color-primary-hover: #1C40BE;
+  
+  /* Neutral colors - text and backgrounds */
+  --color-text-primary: #1B1B21;
+  --color-text-secondary: #1B1B21;
+  
+  --color-background-body: #F9FAFB;
+  --color-background-card: #FFFFFF;
+  --color-background-table: #F5F5F7;
+  
+  /* Borders */
+  --color-border: #D1D5DC;
+  --color-border-card: #C6C5D0;
+  --color-border-table: #C6C5D0;
+  --color-border-sidebar: #E5E7EB;
+  
+  /* Component backgrounds */
+  --color-background-header: #1B243D;
+  --color-background-sidebar: #F3F4F6;
+  --color-background-date-range: #F5F2FA;
+  --color-background-account: #E9E7EF;
+  
+  /* Interactive states */
+  --color-navigation-hover: #DDE1FF;
+  --color-navigation-focus: #DDE1FF;
+  --color-button-hover: #1C40BE;
+  --color-button-focus: #1C40BE;
+  
+  /* Links */
+  --color-link: #1C40BE;
+  
+  /* User account */
+  --color-user-account: #1C40BE;
+  
+  /* Charts */
+  --color-chart-point: #1C40BE;
+  --color-chart-line: #1C40BE;
+  --color-chart-fill: #DDE1FF;
+  
+  /* Semantic colors */
+  --color-success: #C2EFAD;
+  --color-error: #FFDAD6;
+}
+
 /* You can add global styles to this file, and also import other style files */
