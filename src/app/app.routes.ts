@@ -4,7 +4,7 @@ import { ROUTES } from './core/constants/routes.constants';
 export const routes: Routes = [
   {
     path: ROUTES.ROOT,
-    redirectTo: `/${ROUTES.DASHBOARD}`,
+    redirectTo: `/${ROUTES.TRANSFERS}`,
     pathMatch: 'full',
   },
   {
