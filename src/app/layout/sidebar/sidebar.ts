@@ -1,4 +1,4 @@
-import { Component, computed } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ROUTES } from '../../core/constants/routes.constants';
 
@@ -35,7 +35,11 @@ export const SIDEBAR_NAVIGATION_ITEMS: NavigationItem[] = [
   styleUrl: './sidebar.scss',
 })
 export class Sidebar {
-  readonly topItems$ = computed(() => SIDEBAR_NAVIGATION_ITEMS.filter(item => !item.alignBottom));
+  readonly $topItems = signal<NavigationItem[]>(
+    SIDEBAR_NAVIGATION_ITEMS.filter(item => !item.alignBottom)
+  );
 
-  readonly bottomItems$ = computed(() => SIDEBAR_NAVIGATION_ITEMS.filter(item => item.alignBottom));
+  readonly $bottomItems = signal<NavigationItem[]>(
+    SIDEBAR_NAVIGATION_ITEMS.filter(item => item.alignBottom)
+  );
 }
