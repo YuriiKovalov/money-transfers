@@ -1,0 +1,22 @@
+<div class="p-6">
+  <h2 class="text-xl font-semibold mb-6">Account Balance</h2>
+
+  <!-- Account Balance Section -->
+  <section class="mb-8">
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-lg font-semibold text-gray-900">Cash Available to Trade</h3>
+        <button
+          type="button"
+          class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+          (click)="onPeriodChange()"
+        >
+          {{ selectedPeriod().label }}
+        </button>
+      </div>
+      <div class="h-64">
+        <app-chart [data]="chartData()" [labels]="chartLabels()" />
+      </div>
+    </div>
+  </section>
+</div>
