@@ -50,6 +50,13 @@
   --font-family-sans: 'Plus Jakarta Sans', sans-serif;
 }
 
+/* Global box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* Global font setup */
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;

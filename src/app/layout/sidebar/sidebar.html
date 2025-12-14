@@ -1,0 +1,25 @@
+<nav class="h-full flex flex-col py-4">
+  <ul class="space-y-2 flex-1">
+    @for (item of topItems$(); track item.label) {
+      <li>
+        <a class="flex flex-col items-center justify-center gap-3">
+          <img [src]="item.icon" [alt]="item.label" class="w-5 h-5" />
+        </a>
+        <span>{{ item.label }}</span>
+      </li>
+    }
+  </ul>
+
+  <ul class="space-y-2 mt-auto">
+    @for (item of bottomItems$(); track item.label) {
+      <li>
+        <a
+          class="flex flex-col items-center justify-center gap-3"
+        >
+          <img [src]="item.icon" [alt]="item.label" class="w-5 h-5" />
+        </a>
+        <span>{{ item.label }}</span>
+      </li>
+    }
+  </ul>
+</nav>
