@@ -6,7 +6,11 @@ import { Component } from '@angular/core';
   template: `
     <header class="h-12 flex items-center">
       <div class="w-20 h-[30px] mx-4">
-        <img src="assets/images/logo-st-dark.svg" alt="SAGE TRADER" class="h-full w-auto object-contain" />
+        <img
+          src="assets/images/logo-st-dark.svg"
+          alt="SAGE TRADER"
+          class="h-full w-auto object-contain"
+        />
       </div>
     </header>
   `,
@@ -15,9 +19,7 @@ import { Component } from '@angular/core';
       header {
         background-color: var(--color-background-header);
       }
-    `
-  ]
+    `,
+  ],
 })
-export class Header {
-
-}
+export class Header {}

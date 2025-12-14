@@ -12,7 +12,7 @@ import { Sidebar } from './layout/sidebar/sidebar';
       main {
         background-color: var(--color-background-body);
       }
-    `
-  ]
+    `,
+  ],
 })
 export class App {}

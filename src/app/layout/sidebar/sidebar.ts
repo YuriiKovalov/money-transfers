@@ -27,11 +27,7 @@ export const SIDEBAR_NAVIGATION_ITEMS: NavigationItem[] = [
   styleUrl: './sidebar.scss',
 })
 export class Sidebar {
-  readonly topItems$ = computed(() =>
-    SIDEBAR_NAVIGATION_ITEMS.filter(item => !item.alignBottom)
-  );
+  readonly topItems$ = computed(() => SIDEBAR_NAVIGATION_ITEMS.filter(item => !item.alignBottom));
 
-  readonly bottomItems$ = computed(() =>
-    SIDEBAR_NAVIGATION_ITEMS.filter(item => item.alignBottom)
-  );
+  readonly bottomItems$ = computed(() => SIDEBAR_NAVIGATION_ITEMS.filter(item => item.alignBottom));
 }
