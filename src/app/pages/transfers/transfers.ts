@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { filter, map, startWith } from 'rxjs';
+import { filter, map } from 'rxjs';
 import { TRANSFERS_ROUTES } from '../../core/constants/routes.constants';
 import { TabsComponent } from '../../shared/components/tabs/tabs';
 import { TRANSFERS_NAVIGATION_ITEMS } from '../../core/constants/transfers-nav.constants';
@@ -21,8 +21,7 @@ export class Transfers {
   readonly $activeTab = toSignal(
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
-      map(() => this.getActiveRoute()),
-      startWith(this.getActiveRoute())
+      map(() => this.getActiveRoute())
     ),
     { initialValue: TRANSFERS_ROUTES.OVERVIEW }
   );

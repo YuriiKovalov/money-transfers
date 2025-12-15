@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
-import { filter, map, startWith } from 'rxjs';
+import { filter, map } from 'rxjs';
 import { IconDirective } from '../../shared/directives/icon.directive';
 import { SIDEBAR_NAVIGATION_ITEMS } from '../../core/constants/sidebar-nav.constants';
 
@@ -18,10 +18,9 @@ export class Sidebar {
   readonly $active = toSignal(
     this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-      map(() => this.getActiveRoute()),
-      startWith(this.getActiveRoute())
+      map(() => this.getActiveRoute())
     ),
-    { initialValue: '' }
+    { initialValue: this.getActiveRoute() }
   );
 
   readonly topItems = this.sidebarNavigationItems.filter(item => !item.alignBottom);

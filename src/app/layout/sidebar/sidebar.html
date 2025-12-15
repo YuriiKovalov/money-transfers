@@ -6,9 +6,11 @@
         [class.active]="$active() === item.route"
         class="cursor-pointer flex flex-col items-center"
       >
-        <a class="flex flex-col items-center justify-center gap-3">
-          <img [appIcon]="item.icon!" [size]="'20px'" class="icon" [alt]="item.label" />
-        </a>
+        @if (item.icon) {
+          <a class="flex flex-col items-center justify-center gap-3">
+            <img [appIcon]="item.icon" [size]="'20px'" class="icon" [alt]="item.label" />
+          </a>
+        }
         <span>{{ item.label }}</span>
       </li>
     }
@@ -21,9 +23,11 @@
         [class.active]="$active() === item.route"
         class="cursor-pointer flex flex-col items-center"
       >
-        <a class="flex flex-col items-center justify-center gap-3">
-          <img [appIcon]="item.icon!" [size]="'20px'" class="icon" [alt]="item.label" />
-        </a>
+        @if (item.icon) {
+          <a class="flex flex-col items-center justify-center gap-3">
+            <img [appIcon]="item.icon" [size]="'20px'" class="icon" [alt]="item.label" />
+          </a>
+        }
         <span>{{ item.label }}</span>
       </li>
     }
