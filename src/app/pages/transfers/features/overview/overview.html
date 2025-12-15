@@ -1,61 +1,29 @@
 <h2>Account Balance</h2>
 
-<section class="card-rounded">
-  <div class="p-6">
-    <div class="flex justify-between items-center mb-4">
-      <h3 class="text-lg font-semibold text-gray-900">Cash Available to Trade</h3>
-      <button
-        type="button"
-        class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-        (click)="onPeriodChange()"
-      >
-        {{ selectedPeriod().label }}
-      </button>
-    </div>
-    <div class="h-64">
-      <app-chart [data]="chartData()" [labels]="chartLabels()" />
-    </div>
+<section class="card-rounded px-4 py-6">
+  <div class="flex justify-between items-center mb-4">
+    <h3>Cash Available to Trade</h3>
+    <button type="button" class="button-secondary">Last 90 days</button>
   </div>
+  <app-chart [data]="chartData()" [labels]="chartLabels()" />
 </section>
 
-<h2 class="text-xl font-semibold mb-6">Connected Accounts</h2>
+<h2>Connected Accounts</h2>
 
 <section>
-  <div class="grid grid-cols-2 gap-4">
-    <div>
-      <div class="flex items-center gap-4">
-        <div class="icon-wrapper">
-          <span icon="bank" size="28px"></span>
-        </div>
-        <div class="text-wrapper">
-          <h3 class="text-lg font-semibold text-gray-900">Wire Accounts</h3>
-          <p class="text-sm text-gray-500">Add a bank account for wire deposits and withdrawals.</p>
-        </div>
-      </div>
-      <button
-        type="button"
-        class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-      >
-        + Add New Wire Account
-      </button>
-    </div>
+  <div class="grid grid-cols-2 gap-6">
+    <app-account-type
+      title="Wire Accounts"
+      description="Add a bank account for wire deposits and withdrawals."
+      buttonText="+ Add New Wire Account"
+      icon="bank"
+    ></app-account-type>
 
-    <div>
-      <div class="flex items-center gap-4">
-        <div class="icon-wrapper">
-          <span size="28px" icon="plaid"></span>
-        </div>
-        <div class="text-wrapper">
-          <h3 class="text-lg font-semibold text-gray-900">Plaid Accounts (ACH)</h3>
-          <p class="text-sm text-gray-500">Connect a bank account via Plaid for ACH transfers.</p>
-        </div>
-      </div>
-      <button
-        type="button"
-        class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-      >
-        + Connect New via Plaid
-      </button>
-    </div>
+    <app-account-type
+      title="Plaid Accounts (ACH)"
+      description="Connect a bank account via Plaid for ACH transfers."
+      buttonText="+ Connect New via Plaid"
+      icon="plaid"
+    ></app-account-type>
   </div>
 </section>

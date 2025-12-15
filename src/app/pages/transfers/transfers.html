@@ -1,12 +1,12 @@
 <div class="h-full flex flex-col">
   <div class="sticky page-header">
     <div class="flex items-center">
-      <h1>Money Transfers</h1>
+      <h1 class="me-8">Money Transfers</h1>
       <app-tabs [tabs]="tabs" [activeTab]="$activeTab()" (tabChange)="onTabChange($event)" />
     </div>
   </div>
 
-  <div class="flex-1 overflow-auto">
+  <div class="flex-1 overflow-auto page-content">
     <router-outlet />
   </div>
 </div>

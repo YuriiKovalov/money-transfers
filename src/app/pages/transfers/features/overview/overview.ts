@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { ChartComponent } from '../../../../shared/components/chart/chart';
-import { IconDirective } from '../../../../shared/directives/icon.directive';
+import { AccountType } from '../../../../shared/components/account-type/account-type';
 
 interface PeriodOption {
   label: string;
@@ -10,8 +10,15 @@ interface PeriodOption {
 
 @Component({
   selector: 'app-transfers-overview',
-  imports: [ChartComponent, IconDirective],
+  imports: [ChartComponent, AccountType],
   templateUrl: './overview.html',
+  styles: [
+    `
+      section:not(:last-child) {
+        margin-bottom: 80px;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Overview {

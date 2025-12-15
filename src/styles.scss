@@ -3,10 +3,14 @@
 :root {
   --color-primary-dark: #1b1b21;
   --color-primary-purple: #374379;
+  --color-primary-purple-middle: #e9e7ef;
+  --color-primary-purple-light: #f5f2fa;
   --color-primary-blue: #1c40be;
   --color-primary-blue-light: #1c40be1a;
   --color-primary-light: #dde1ff;
   --color-primary-white: #ffffff;
+
+  --color-secondary-grey: #45464f;
 
   --color-background-body: #f9fafb;
   --color-background-header: #1b243d;
@@ -41,8 +45,50 @@ h2 {
   font-weight: 500;
   font-size: 22px;
   line-height: 28px;
-  letter-spacing: 0px;
   margin-bottom: 24px;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+h4 {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+}
+
+p {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.15px;
+  color: var(--color-secondary-grey);
+}
+
+.button-link {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  color: var(--color-primary-blue);
+  cursor: pointer;
+  padding: 6px 12px;
+}
+
+.button-secondary {
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  color: var(--color-secondary-grey);
+  background: var(--color-primary-purple-light);
 }
 
 .card-rounded {
