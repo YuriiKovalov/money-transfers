@@ -12,6 +12,7 @@ export interface Transfer {
   account: string;
   amount: number;
   status: TransferStatus;
+  [key: string]: unknown;
 }
 
 export interface ConnectedAccount {

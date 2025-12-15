@@ -46,7 +46,7 @@ export const TransfersStore = signalStore(
   })),
   withComputed(store => ({
     filteredTransfers: computed(() =>
-      store.transfers().filter(transfer => store.transferFilter().includes(transfer.type))
+      store.transfers().filter(transfer => store.transferFilter().includes(transfer.method))
     ),
   }))
 );

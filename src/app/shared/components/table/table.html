@@ -1,1 +1,20 @@
-<p>table works!</p>
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        @for (column of $columns(); track column.label) {
+          <th>{{ column.label }}</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of $data(); track row) {
+        <tr>
+          @for (column of $columns(); track column.value) {
+            <td>{{ row[column.value] }}</td>
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

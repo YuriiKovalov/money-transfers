@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { SimpleModel } from '../../../core/models/simple.model';
 
 @Component({
   selector: 'app-table',
@@ -7,4 +8,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './table.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Table {}
+export class Table {
+  readonly $data = input.required<Array<Record<string, unknown>>>({ alias: 'data' });
+  readonly $columns = input.required<SimpleModel<string>[]>({ alias: 'columns' });
+}
