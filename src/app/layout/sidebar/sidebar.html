@@ -1,6 +1,6 @@
 <nav class="h-full flex flex-col py-4">
   <ul class="space-y-2 flex-1">
-    @for (item of $topItems(); track item.label) {
+    @for (item of topItems; track item.label) {
       <li
         [routerLink]="item.route"
         [class.active]="$active() === item.route"
@@ -15,7 +15,7 @@
   </ul>
 
   <ul class="space-y-2 mt-auto">
-    @for (item of $bottomItems(); track item.label) {
+    @for (item of bottomItems; track item.label) {
       <li
         [routerLink]="item.route"
         [class.active]="$active() === item.route"
