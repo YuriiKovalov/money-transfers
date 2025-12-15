@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter, map } from 'rxjs';
@@ -10,6 +10,7 @@ import { SIDEBAR_NAVIGATION_ITEMS } from '../../core/constants/sidebar-nav.const
   imports: [RouterLink, IconDirective],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Sidebar {
   private readonly router = inject(Router);

@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   effect,
   ElementRef,
@@ -28,6 +29,7 @@ import { Chart, ChartConfiguration, ChartType } from 'chart.js/auto';
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChartComponent implements OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);

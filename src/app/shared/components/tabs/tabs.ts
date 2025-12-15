@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { NavigationItem } from '../../../core/models/navigation-item.interface';
 
 @Component({
@@ -38,6 +38,7 @@ import { NavigationItem } from '../../../core/models/navigation-item.interface';
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabsComponent {
   $tabs = input.required<NavigationItem[]>({ alias: 'tabs' });

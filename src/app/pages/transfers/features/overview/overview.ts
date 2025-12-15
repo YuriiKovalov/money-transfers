@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { ChartComponent } from '../../../../shared/components/chart/chart';
 import { IconDirective } from '../../../../shared/directives/icon.directive';
 
@@ -12,6 +12,7 @@ interface PeriodOption {
   selector: 'app-transfers-overview',
   imports: [ChartComponent, IconDirective],
   templateUrl: './overview.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Overview {
   readonly periodOptions: PeriodOption[] = [

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter, map } from 'rxjs';
@@ -14,6 +14,7 @@ import { TransfersStore } from './data-access/transfers.store';
   templateUrl: './transfers.html',
   styleUrl: './transfers.scss',
   providers: [TransfersStore, TransfersFacade],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Transfers {
   private readonly router = inject(Router);
