@@ -1,15 +1,18 @@
-import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
+import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals';
 import {
   AccountBalancePoint,
   ConnectedAccountsResponse,
   Transfer,
 } from '../../../core/api/models/transfers.models';
+import { computed } from '@angular/core';
+import { TRANSFERS_FILTER_OPTIONS } from '../../../core/constants/transfers-filter.constants';
 
 type TransfersState = {
   loading: boolean;
   chartPoints: AccountBalancePoint[];
   connectedAccounts: ConnectedAccountsResponse | null;
   transfers: Transfer[];
+  transferFilter: string[];
 };
 
 const initialState: TransfersState = {
@@ -17,6 +20,7 @@ const initialState: TransfersState = {
   chartPoints: [],
   connectedAccounts: null,
   transfers: [],
+  transferFilter: TRANSFERS_FILTER_OPTIONS,
 };
 
 export const TransfersStore = signalStore(
@@ -24,6 +28,9 @@ export const TransfersStore = signalStore(
   withMethods(store => ({
     updateLoading(loading: boolean): void {
       patchState(store, { loading });
+    },
+    updateTransferFilter(filter: string[]): void {
+      patchState(store, { transferFilter: filter });
     },
     updateOverview(payload: {
       chartPoints: AccountBalancePoint[];
@@ -36,5 +43,10 @@ export const TransfersStore = signalStore(
         transfers: payload.transfers,
       });
     },
+  })),
+  withComputed(store => ({
+    filteredTransfers: computed(() =>
+      store.transfers().filter(transfer => store.transferFilter().includes(transfer.type))
+    ),
   }))
 );

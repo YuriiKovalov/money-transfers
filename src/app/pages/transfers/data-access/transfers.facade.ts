@@ -13,7 +13,12 @@ export class TransfersFacade {
   readonly $connectedAccounts = this.store.connectedAccounts;
   readonly $wireAccounts = computed(() => this.store.connectedAccounts()?.wireAccounts ?? []);
   readonly $plaidAccounts = computed(() => this.store.connectedAccounts()?.plaidAccounts ?? []);
-  readonly $transfers = this.store.transfers;
+  readonly $filteredTransfers = this.store.filteredTransfers;
+  readonly $transferFilter = this.store.transferFilter;
+
+  updateTransferFilter(filter: string[]): void {
+    this.store.updateTransferFilter(filter);
+  }
 
   initOverview() {
     forkJoin({

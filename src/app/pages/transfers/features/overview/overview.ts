@@ -1,6 +1,20 @@
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  OnDestroy,
+  signal,
+} from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+
 import { ChartComponent } from '../../../../shared/components/chart/chart';
 import { AccountType } from '../../../../shared/components/account-type/account-type';
+import { TableFilter } from '../../../../shared/components/table-filter/table-filter';
+import { TransfersFacade } from '../../data-access/transfers.facade';
+import { TRANSFERS_FILTER_OPTIONS } from '../../../../core/constants/transfers-filter.constants';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 interface PeriodOption {
   label: string;
@@ -10,7 +24,7 @@ interface PeriodOption {
 
 @Component({
   selector: 'app-transfers-overview',
-  imports: [ChartComponent, AccountType],
+  imports: [ChartComponent, AccountType, TableFilter, ReactiveFormsModule],
   templateUrl: './overview.html',
   styles: [
     `
@@ -22,6 +36,8 @@ interface PeriodOption {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Overview {
+  private readonly facade = inject(TransfersFacade);
+
   readonly periodOptions: PeriodOption[] = [
     {
       label: 'Last 30 days',
@@ -40,14 +56,23 @@ export class Overview {
     },
   ];
 
+  readonly filterOptions = TRANSFERS_FILTER_OPTIONS;
+
   readonly selectedPeriod = signal<PeriodOption>(this.periodOptions[2]);
 
   readonly chartLabels = computed(() => this.selectedPeriod().labels);
   readonly chartData = computed(() => this.selectedPeriod().data);
 
-  onPeriodChange(): void {
-    const currentIndex = this.periodOptions.findIndex(p => p.label === this.selectedPeriod().label);
-    const nextIndex = (currentIndex + 1) % this.periodOptions.length;
-    this.selectedPeriod.set(this.periodOptions[nextIndex]);
+  readonly transfersFilterControl = new FormControl<string[]>(this.facade.$transferFilter());
+
+  constructor() {
+    this.listenTableFilterChange();
+  }
+
+  private listenTableFilterChange(): void {
+    this.transfersFilterControl.valueChanges.pipe(takeUntilDestroyed()).subscribe(value => {
+      if (!value) return;
+      this.facade.updateTransferFilter(value);
+    });
   }
 }

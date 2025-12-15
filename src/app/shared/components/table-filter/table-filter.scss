@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  border: 1px solid var(--color-border-grey-3);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+button:not(:last-child) {
+  border-right: 1px solid var(--color-border-grey-3);
+}
+
+button {
+  cursor: pointer;
+  width: 108px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+
+  &.active,
+  &:hover {
+    background: var(--color-secondary-blue);
+    color: var(--color-secondary-blue-text);
+  }
+}
