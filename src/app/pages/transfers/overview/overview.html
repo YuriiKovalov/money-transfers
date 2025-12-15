@@ -20,3 +20,50 @@
     </div>
   </section>
 </div>
+
+<h2 class="text-xl font-semibold mb-6">Connected Accounts</h2>
+
+<section>
+  <div class="grid grid-cols-2 gap-4">
+    <div>
+      <div class="flex items-center gap-4">
+        <div class="icon-wrapper">
+          <img appIcon="bank" size="28px" alt="Wire Accounts" src="assets/icons/bank.svg" />
+        </div>
+        <div class="text-wrapper">
+          <h3 class="text-lg font-semibold text-gray-900">Wire Accounts</h3>
+          <p class="text-sm text-gray-500">Add a bank account for wire deposits and withdrawals.</p>
+        </div>
+      </div>
+      <button
+        type="button"
+        class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+      >
+        + Add New Wire Account
+      </button>
+    </div>
+
+    <div>
+      <div class="flex items-center gap-4">
+        <div class="icon-wrapper">
+          <img
+            appIcon="plaid"
+            size="28px"
+            alt="Plaid Accounts (ACH)"
+            src="assets/icons/plaid.svg"
+          />
+        </div>
+        <div class="text-wrapper">
+          <h3 class="text-lg font-semibold text-gray-900">Plaid Accounts (ACH)</h3>
+          <p class="text-sm text-gray-500">Connect a bank account via Plaid for ACH transfers.</p>
+        </div>
+      </div>
+      <button
+        type="button"
+        class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+      >
+        + Connect New via Plaid
+      </button>
+    </div>
+  </div>
+</section>

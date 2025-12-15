@@ -1,5 +1,6 @@
 import { Component, computed, signal } from '@angular/core';
 import { ChartComponent } from '../../../shared/components/chart/chart';
+import { IconDirective } from '../../../shared/directives/icon.directive';
 
 interface PeriodOption {
   label: string;
@@ -9,7 +10,7 @@ interface PeriodOption {
 
 @Component({
   selector: 'app-transfers-overview',
-  imports: [ChartComponent],
+  imports: [ChartComponent, IconDirective],
   templateUrl: './overview.html',
 })
 export class Overview {
