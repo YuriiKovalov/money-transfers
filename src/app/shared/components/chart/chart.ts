@@ -1,4 +1,14 @@
-import { Component, effect, ElementRef, input, OnDestroy, viewChild } from '@angular/core';
+import {
+  Component,
+  effect,
+  ElementRef,
+  inject,
+  input,
+  OnDestroy,
+  PLATFORM_ID,
+  viewChild,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Chart, ChartConfiguration, ChartType } from 'chart.js/auto';
 
 @Component({
@@ -20,6 +30,9 @@ import { Chart, ChartConfiguration, ChartType } from 'chart.js/auto';
   ],
 })
 export class ChartComponent implements OnDestroy {
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly isBrowser = isPlatformBrowser(this.platformId);
+
   chartCanvas = viewChild<ElementRef<HTMLCanvasElement>>('chartCanvas');
   $data = input.required<number[]>({ alias: 'data' });
   $labels = input.required<string[]>({ alias: 'labels' });
@@ -30,6 +43,11 @@ export class ChartComponent implements OnDestroy {
 
   constructor() {
     effect(() => {
+      // Only create chart in browser environment
+      if (!this.isBrowser) {
+        return;
+      }
+
       const canvas = this.chartCanvas()?.nativeElement;
       const data = this.$data();
       const labels = this.$labels();

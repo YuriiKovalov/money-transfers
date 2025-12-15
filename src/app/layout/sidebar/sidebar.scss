@@ -1,3 +1,31 @@
 nav {
   background-color: var(--color-background-sidebar);
+  width: var(--sidebar-width);
+}
+
+a {
+  width: 56px;
+  height: 32px;
+  border-radius: 28px;
+  margin-bottom: 4px;
+  transition: background-color 0.2s ease;
+}
+
+li {
+  font-size: 12px;
+  font-weight: 500;
+
+  &.active,
+  &:hover {
+    font-weight: 600;
+    color: var(--color-primary-purple);
+
+    a {
+      background-color: var(--color-primary-light);
+    }
+
+    .icon {
+      background-color: var(--color-primary-purple);
+    }
+  }
 }

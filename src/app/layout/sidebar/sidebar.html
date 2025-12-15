@@ -1,9 +1,13 @@
 <nav class="h-full flex flex-col py-4">
   <ul class="space-y-2 flex-1">
     @for (item of $topItems(); track item.label) {
-      <li [routerLink]="item.route" class="cursor-pointer">
+      <li
+        [routerLink]="item.route"
+        [class.active]="$active() === item.route"
+        class="cursor-pointer flex flex-col items-center"
+      >
         <a class="flex flex-col items-center justify-center gap-3">
-          <img [src]="item.icon" [alt]="item.label" class="w-5 h-5" />
+          <img [appIcon]="item.icon" [size]="'20px'" class="icon" [alt]="item.label" />
         </a>
         <span>{{ item.label }}</span>
       </li>
@@ -12,9 +16,13 @@
 
   <ul class="space-y-2 mt-auto">
     @for (item of $bottomItems(); track item.label) {
-      <li [routerLink]="item.route">
+      <li
+        [routerLink]="item.route"
+        [class.active]="$active() === item.route"
+        class="cursor-pointer flex flex-col items-center"
+      >
         <a class="flex flex-col items-center justify-center gap-3">
-          <img [src]="item.icon" [alt]="item.label" class="w-5 h-5" />
+          <img [appIcon]="item.icon" [size]="'20px'" class="icon" [alt]="item.label" />
         </a>
         <span>{{ item.label }}</span>
       </li>

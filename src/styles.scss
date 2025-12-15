@@ -1,65 +1,25 @@
 @import 'tailwindcss';
 
-@theme {
-  /* Primary color - main brand color */
-  --color-primary: #1c40be;
-  --color-primary-hover: #1c40be;
-
-  /* Neutral colors - text and backgrounds */
-  --color-text-primary: #1b1b21;
-  --color-text-secondary: #1b1b21;
+:root {
+  --color-primary-dark: #1b1b21;
+  --color-primary-purple: #374379;
+  --color-primary-light: #dde1ff;
 
   --color-background-body: #f9fafb;
-  --color-background-card: #ffffff;
-  --color-background-table: #f5f5f7;
-
-  /* Borders */
-  --color-border: #d1d5dc;
-  --color-border-card: #c6c5d0;
-  --color-border-table: #c6c5d0;
-  --color-border-sidebar: #e5e7eb;
-
-  /* Component backgrounds */
   --color-background-header: #1b243d;
   --color-background-sidebar: #f3f4f6;
-  --color-background-date-range: #f5f2fa;
-  --color-background-account: #e9e7ef;
 
-  /* Interactive states */
-  --color-navigation-hover: #dde1ff;
-  --color-navigation-focus: #dde1ff;
-  --color-button-hover: #1c40be;
-  --color-button-focus: #1c40be;
-
-  /* Links */
-  --color-link: #1c40be;
-
-  /* User account */
-  --color-user-account: #1c40be;
-
-  /* Charts */
-  --color-chart-point: #1c40be;
-  --color-chart-line: #1c40be;
-  --color-chart-fill: #dde1ff;
-
-  /* Semantic colors */
-  --color-success: #c2efad;
-  --color-error: #ffdad6;
-
-  /* Typography - font family */
-  --font-family-sans: 'Plus Jakarta Sans', sans-serif;
+  /* SIZES */
+  --sidebar-width: 112px;
 }
 
-/* Global box-sizing */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Global font setup */
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--color-primary-dark);
 }
-
-/* You can add global styles to this file, and also import other style files */
