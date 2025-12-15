@@ -6,12 +6,14 @@
   --color-primary-blue: #1c40be;
   --color-primary-blue-light: #1c40be1a;
   --color-primary-light: #dde1ff;
+  --color-primary-white: #ffffff;
 
   --color-background-body: #f9fafb;
   --color-background-header: #1b243d;
   --color-background-sidebar: #f3f4f6;
 
-  --color-border-grey: #d1d5dc;
+  --color-border-grey-1: #d1d5dc;
+  --color-border-grey-2: #c6c5d0;
 
   /* SIZES */
   --sidebar-width: 112px;
@@ -33,5 +35,18 @@ h1 {
   font-weight: 500;
   font-size: 24px;
   line-height: 32px;
-  margin-bottom: 20px;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 28px;
+  letter-spacing: 0px;
+  margin-bottom: 24px;
+}
+
+.card-rounded {
+  border-radius: 24px;
+  border: 0.5px solid var(--color-border-grey-2);
+  background: var(--color-primary-white);
 }
