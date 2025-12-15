@@ -1,0 +1,46 @@
+{
+  "wireAccounts": [
+    {
+      "bankName": "BMO Harris Bank",
+      "maskedAccount": "918273645"
+    },
+    {
+      "bankName": "Citibank",
+      "maskedAccount": "334455667"
+    },
+    {
+      "bankName": "Wells Fargo",
+      "maskedAccount": "771122334"
+    },
+    {
+      "bankName": "HSBC",
+      "maskedAccount": "228899445"
+    },
+    {
+      "bankName": "TD Bank",
+      "maskedAccount": "667788991"
+    }
+  ],
+  "plaidAccounts": [
+    {
+      "bankName": "Bank of America",
+      "maskedAccount": "563412789"
+    },
+    {
+      "bankName": "Chase",
+      "maskedAccount": "445566778"
+    },
+    {
+      "bankName": "Capital One",
+      "maskedAccount": "990011223"
+    },
+    {
+      "bankName": "Ally Bank",
+      "maskedAccount": "556677889"
+    },
+    {
+      "bankName": "US Bank",
+      "maskedAccount": "331122445"
+    }
+  ]
+}
