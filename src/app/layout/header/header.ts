@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-header',
   imports: [],
   template: `
-    <header class="h-12 flex items-center">
-      <div class="w-20 h-[30px] mx-4">
+    <header class="flex items-center">
+      <div class="logo-wrapper mx-4">
         <img
           src="assets/images/logo-st-dark.svg"
           alt="SAGE TRADER"
@@ -17,7 +17,13 @@ import { Component } from '@angular/core';
   styles: [
     `
       header {
+        height: var(--header-height);
         background-color: var(--color-background-header);
+      }
+
+      .logo-wrapper {
+        max-width: 80px;
+        max-height: 30px;
       }
     `,
   ],
