@@ -1,0 +1,16 @@
+{
+  "points": [
+    { "label": "W1", "value": 25000 },
+    { "label": "W2", "value": 14000 },
+    { "label": "W3", "value": 26000 },
+    { "label": "W4", "value": 20500 },
+    { "label": "W5", "value": 22000 },
+    { "label": "W6", "value": 26000 },
+    { "label": "W7", "value": 8500 },
+    { "label": "W8", "value": 26500 },
+    { "label": "W9", "value": 26000 },
+    { "label": "W10", "value": 18500 },
+    { "label": "W11", "value": 27000 },
+    { "label": "W12", "value": 29000 }
+  ]
+}

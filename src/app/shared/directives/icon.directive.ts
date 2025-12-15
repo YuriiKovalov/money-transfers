@@ -1,28 +1,28 @@
 import { Directive, ElementRef, input, effect, inject } from '@angular/core';
 
 @Directive({
-  selector: 'img[appIcon]',
+  selector: '[icon]',
 })
 export class IconDirective {
   private readonly el = inject(ElementRef<HTMLElement>);
 
-  readonly $appIcon = input.required<string>({ alias: 'appIcon' });
+  readonly $icon = input.required<string>({ alias: 'icon' });
   readonly $size = input<string>('20px', { alias: 'size' });
 
   constructor() {
     effect(() => {
-      const name = this.$appIcon();
+      const icon = this.$icon();
       const iconSize = this.$size();
 
-      if (name) {
-        this.setupIcon(name, iconSize);
+      if (icon) {
+        const src = `assets/icons/${icon}.svg`;
+        this.setupIcon(src, iconSize);
       }
     });
   }
 
-  private setupIcon(name: string, size: string): void {
+  private setupIcon(src: string, size: string): void {
     const element = this.el.nativeElement;
-    const iconPath = `assets/icons/${name}.svg`;
 
     element.style.width = size;
     element.style.height = size;
@@ -31,7 +31,7 @@ export class IconDirective {
     element.style.display = 'inline-block';
     element.style.flexShrink = '0';
 
-    const maskUrl = `url("${iconPath}")`;
+    const maskUrl = `url("${src}")`;
     element.style.setProperty('mask-image', maskUrl);
     element.style.setProperty('-webkit-mask-image', maskUrl);
     element.style.setProperty('mask-size', 'contain');
