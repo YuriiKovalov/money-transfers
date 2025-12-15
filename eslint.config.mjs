@@ -2,6 +2,7 @@ import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import prettier from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
+import angular from '@angular-eslint/eslint-plugin';
 
 export default tseslint.config(
   {
@@ -20,6 +21,7 @@ export default tseslint.config(
     files: ['**/*.ts'],
     plugins: {
       prettier: prettier,
+      '@angular-eslint': angular,
     },
     languageOptions: {
       parser: tseslint.parser,
@@ -37,6 +39,7 @@ export default tseslint.config(
         },
       ],
       'prettier/prettier': 'error',
+      '@angular-eslint/prefer-on-push-component-change-detection': 'error',
     },
   },
   prettierConfig

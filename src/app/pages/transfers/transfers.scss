@@ -1,1 +1,9 @@
-// Transfers styles
+.page-header {
+  border-bottom: 1px solid var(--color-border-grey-1);
+  padding-bottom: 16px;
+  margin-bottom: 40px;
+}
+
+.page-content {
+  max-width: 1016px;
+}

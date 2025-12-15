@@ -1,0 +1,38 @@
+<h2>Account Balance</h2>
+
+<section class="card-rounded px-4 py-6">
+  <div class="flex justify-between items-center mb-4">
+    <h3>Cash Available to Trade</h3>
+    <button type="button" class="button-secondary">Last 90 days</button>
+  </div>
+  <app-chart [data]="$chartData()" [labels]="$chartLabels()" />
+</section>
+
+<h2>Connected Accounts</h2>
+
+<section>
+  <div class="grid grid-cols-2 gap-6">
+    <app-account-type
+      title="Wire Accounts"
+      description="Add a bank account for wire deposits and withdrawals."
+      buttonText="+ Add New Wire Account"
+      icon="bank"
+    ></app-account-type>
+
+    <app-account-type
+      title="Plaid Accounts (ACH)"
+      description="Connect a bank account via Plaid for ACH transfers."
+      buttonText="+ Connect New via Plaid"
+      icon="plaid"
+    ></app-account-type>
+  </div>
+</section>
+
+<h2>Recent Transfers</h2>
+
+<section class="card-rounded p-4">
+  <div class="flex justify-between items-center">
+    <app-table-filter [options]="filterOptions" [formControl]="transfersFilterControl" />
+    <button type="button" class="button-secondary">Last 7 days</button>
+  </div>
+</section>

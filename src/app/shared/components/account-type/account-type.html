@@ -1,0 +1,11 @@
+<div class="flex gap-4 mb-2">
+  <div class="account-type">
+    <span [icon]="$icon()" size="20px"></span>
+  </div>
+  <div class="">
+    <h4>{{ $title() }}</h4>
+    <p>{{ $description() }}</p>
+  </div>
+</div>
+<ng-content></ng-content>
+<a href="#" class="button-link">{{ $buttonText() }}</a>

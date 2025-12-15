@@ -14,19 +14,19 @@ export const transfersRoutes: Routes = [
       },
       {
         path: TRANSFERS_ROUTES.OVERVIEW,
-        loadComponent: () => import('./overview/overview').then(m => m.Overview),
+        loadComponent: () => import('./features/overview/overview').then(m => m.Overview),
       },
       {
         path: TRANSFERS_ROUTES.DEPOSIT,
-        loadComponent: () => import('./deposit/deposit').then(m => m.Deposit),
+        loadComponent: () => import('./features/deposit/deposit').then(m => m.Deposit),
       },
       {
         path: TRANSFERS_ROUTES.WITHDRAW,
-        loadComponent: () => import('./withdraw/withdraw').then(m => m.Withdraw),
+        loadComponent: () => import('./features/withdraw/withdraw').then(m => m.Withdraw),
       },
       {
         path: TRANSFERS_ROUTES.HISTORY,
-        loadComponent: () => import('./history/history').then(m => m.History),
+        loadComponent: () => import('./features/history/history').then(m => m.History),
       },
     ],
   },
