@@ -1,3 +1,26 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-primary-dark: #1b1b21;
+  --color-primary-purple: #374379;
+  --color-primary-light: #dde1ff;
+
+  --color-background-body: #f9fafb;
+  --color-background-header: #1b243d;
+  --color-background-sidebar: #f3f4f6;
+
+  /* SIZES */
+  --sidebar-width: 112px;
+  --header-height: 48px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--color-primary-dark);
+}

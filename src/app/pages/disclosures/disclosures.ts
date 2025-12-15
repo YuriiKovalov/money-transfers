@@ -1,0 +1,14 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-disclosures',
+  imports: [],
+  template: `
+    <div class="p-6">
+      <h1 class="text-2xl font-bold mb-4">Disclosures</h1>
+      <p>Disclosures content goes here</p>
+    </div>
+  `,
+  styles: [],
+})
+export class Disclosures {}
