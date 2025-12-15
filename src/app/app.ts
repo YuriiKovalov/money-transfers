@@ -11,6 +11,7 @@ import { Sidebar } from './layout/sidebar/sidebar';
     `
       main {
         background-color: var(--color-background-body);
+        padding: 16px 40px;
       }
     `,
   ],

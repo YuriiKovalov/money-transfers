@@ -5,24 +5,39 @@ import { NavigationItem } from '../../../core/models/navigation-item.interface';
   selector: 'app-tabs',
   imports: [],
   template: `
-    <nav class="flex gap-6 mb-4">
+    <nav class="flex gap-1">
       @for (tab of $tabs(); track tab.route) {
         <button
           type="button"
-          [class]="
-            $activeTab() === tab.route
-              ? 'px-4 py-2 rounded-lg bg-blue-100 text-blue-700 font-medium shadow-sm'
-              : 'px-4 py-2 text-gray-600 hover:text-gray-900'
-          "
+          [class.active]="$activeTab() === tab.route"
           (click)="onTabClick(tab.route)"
         >
           {{ tab.label }}
         </button>
       }
     </nav>
-    <div class="border-b border-gray-200"></div>
   `,
-  styles: [],
+  styles: [
+    `
+      button {
+        cursor: pointer;
+        width: 96px;
+        border-radius: 20px;
+        padding: 10px 0;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.1px;
+
+        &.active,
+        &:hover {
+          font-weight: 600;
+          background: var(--color-primary-blue-light);
+          color: var(--color-primary-blue);
+        }
+      }
+    `,
+  ],
 })
 export class TabsComponent {
   $tabs = input.required<NavigationItem[]>({ alias: 'tabs' });
