@@ -1,7 +1,5 @@
-import { Directive } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 
-@Directive()
 export abstract class SignalControlValueAccessor<T> implements ControlValueAccessor {
   protected onChange: (value: T) => void = () => {};
   protected onTouched: () => void = () => {};
