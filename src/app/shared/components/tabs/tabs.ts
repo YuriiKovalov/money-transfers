@@ -1,9 +1,5 @@
 import { Component, input, output } from '@angular/core';
-
-export interface TabItem {
-  label: string;
-  route: string;
-}
+import { NavigationItem } from '../../../core/models/navigation-item.interface';
 
 @Component({
   selector: 'app-tabs',
@@ -29,7 +25,7 @@ export interface TabItem {
   styles: [],
 })
 export class TabsComponent {
-  $tabs = input.required<TabItem[]>({ alias: 'tabs' });
+  $tabs = input.required<NavigationItem[]>({ alias: 'tabs' });
   $activeTab = input.required<string>({ alias: 'activeTab' });
   tabChange = output<string>();
 

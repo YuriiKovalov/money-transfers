@@ -1,7 +1,6 @@
 export interface NavigationItem {
   label: string;
-  icon: string;
-  isActive?: boolean;
+  route: string;
+  icon?: string;
   alignBottom?: boolean;
-  route?: string;
 }

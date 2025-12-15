@@ -3,7 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter, map, startWith } from 'rxjs';
 import { IconDirective } from '../../shared/directives/icon.directive';
-import { SIDEBAR_NAVIGATION_ITEMS } from '../../core/constants/sidebar.constants';
+import { SIDEBAR_NAVIGATION_ITEMS } from '../../core/constants/sidebar-nav.constants';
 
 @Component({
   selector: 'app-sidebar',

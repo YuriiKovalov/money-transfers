@@ -3,7 +3,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter, map, startWith } from 'rxjs';
 import { TRANSFERS_ROUTES } from '../../core/constants/routes.constants';
-import { TabItem, TabsComponent } from '../../shared/components/tabs/tabs';
+import { TabsComponent } from '../../shared/components/tabs/tabs';
+import { TRANSFERS_NAVIGATION_ITEMS } from '../../core/constants/transfers-nav.constants';
 
 @Component({
   selector: 'app-transfers',
@@ -15,12 +16,7 @@ export class Transfers {
   private readonly router = inject(Router);
   private readonly activatedRoute = inject(ActivatedRoute);
 
-  readonly tabs: TabItem[] = [
-    { label: 'Overview', route: TRANSFERS_ROUTES.OVERVIEW },
-    { label: 'Deposit', route: TRANSFERS_ROUTES.DEPOSIT },
-    { label: 'Withdraw', route: TRANSFERS_ROUTES.WITHDRAW },
-    { label: 'History', route: TRANSFERS_ROUTES.HISTORY },
-  ];
+  readonly tabs = TRANSFERS_NAVIGATION_ITEMS;
 
   readonly $activeTab = toSignal(
     this.router.events.pipe(
