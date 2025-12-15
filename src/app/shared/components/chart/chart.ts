@@ -81,7 +81,7 @@ export class ChartComponent implements OnDestroy {
             borderColor: '#1c40be',
             backgroundColor: 'rgba(29, 64, 190, 0.1)',
             fill: true,
-            tension: 0.4,
+            tension: 0,
             pointRadius: 4,
             pointHoverRadius: 6,
             pointBackgroundColor: '#1c40be',

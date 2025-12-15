@@ -1,5 +1,12 @@
-<div class="p-6">
-  <h1 class="text-2xl font-bold mb-4">Transfers</h1>
-  <app-tabs [tabs]="tabs" [activeTab]="$activeTab()" (tabChange)="onTabChange($event)" />
-  <router-outlet />
+<div class="h-full flex flex-col">
+  <div class="sticky top-0 z-10 bg-[var(--color-background-body)]">
+    <div class="p-6 pb-3">
+      <h1 class="text-2xl font-bold mb-4">Transfers</h1>
+      <app-tabs [tabs]="tabs" [activeTab]="$activeTab()" (tabChange)="onTabChange($event)" />
+    </div>
+  </div>
+
+  <div class="flex-1 overflow-auto px-6 pb-6">
+    <router-outlet />
+  </div>
 </div>
