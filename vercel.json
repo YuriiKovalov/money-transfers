@@ -1,11 +1,12 @@
 {
   "version": 2,
   "buildCommand": "npm run build",
-  "functions": {
-    "api/server.mjs": {
-      "runtime": "nodejs18.x"
+  "builds": [
+    {
+      "src": "api/server.mjs",
+      "use": "@vercel/node@3"
     }
-  },
+  ],
   "routes": [
     {
       "src": "/(.*)",
