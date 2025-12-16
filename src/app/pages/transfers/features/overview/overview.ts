@@ -21,6 +21,12 @@ import { AccountItem } from '../../../../shared/components/account-item/account-
       section {
         margin-bottom: 80px;
       }
+
+      .chart-wrapper {
+        height: 376px;
+        display: flex;
+        flex-direction: column;
+      }
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,

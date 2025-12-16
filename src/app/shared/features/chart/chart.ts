@@ -22,10 +22,19 @@ import { Chart, ChartConfiguration, ChartType } from 'chart.js/auto';
   `,
   styles: [
     `
+      :host {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+
       .chart-container {
         position: relative;
         width: 100%;
         height: 100%;
+        box-sizing: border-box;
       }
     `,
   ],
@@ -45,7 +54,6 @@ export class ChartComponent implements OnDestroy {
 
   constructor() {
     effect(() => {
-      // Only create chart in browser environment
       if (!this.isBrowser) {
         return;
       }
@@ -67,7 +75,6 @@ export class ChartComponent implements OnDestroy {
     labels: string[],
     type: ChartType
   ): void {
-    // Destroy existing chart if it exists
     if (this.chart) {
       this.chart.destroy();
     }
@@ -78,47 +85,29 @@ export class ChartComponent implements OnDestroy {
         labels,
         datasets: [
           {
-            label: this.$title(),
             data,
-            borderColor: '#1c40be',
-            backgroundColor: 'rgba(29, 64, 190, 0.1)',
+            borderColor: '#1d40be', // var(--color-primary-blue)
+            borderWidth: 1,
+            backgroundColor: '#DDE1FF', // var(--color-primary-light)
             fill: true,
-            tension: 0,
-            pointRadius: 4,
-            pointHoverRadius: 6,
-            pointBackgroundColor: '#1c40be',
-            pointBorderColor: '#ffffff',
-            pointBorderWidth: 2,
+            pointBackgroundColor: '#1c40be', // var(--color-primary-blue)
           },
         ],
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        layout: {
+          padding: 0,
+        },
         plugins: {
           legend: {
             display: false,
           },
-          tooltip: {
-            enabled: true,
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            padding: 12,
-            titleFont: {
-              size: 14,
-              weight: 'bold',
-            },
-            bodyFont: {
-              size: 13,
-            },
-            cornerRadius: 8,
-          },
         },
         scales: {
           y: {
-            beginAtZero: false,
-            grid: {
-              color: 'rgba(0, 0, 0, 0.05)',
-            },
+            beginAtZero: true,
             ticks: {
               maxTicksLimit: 7,
               callback: function (value) {
@@ -128,12 +117,6 @@ export class ChartComponent implements OnDestroy {
                 }
                 return numValue / 1000 + 'K';
               },
-            },
-          },
-          x: {
-            grid: {
-              display: true,
-              color: 'rgba(0, 0, 0, 0.05)',
             },
           },
         },
