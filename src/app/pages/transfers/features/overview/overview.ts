@@ -31,7 +31,7 @@ export class Overview {
     { label: 'Date', value: 'date' },
     { label: 'Type', value: 'type' },
     { label: 'Method', value: 'method' },
-    { label: 'Account', value: 'account' },
+    { label: 'Account', value: 'account', type: 'mask' },
     { label: 'Amount ($)', value: 'amount' },
     { label: 'Status', value: 'status', type: 'chip' },
   ];

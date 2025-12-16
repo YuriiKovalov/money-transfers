@@ -3,5 +3,5 @@
     <span>{{ $label().charAt(0) }}</span>
   </div>
   <p class="account-label">{{ $label() }}</p>
-  <p class="flex-1 account-number text-right">{{ $number() }}</p>
+  <p class="flex-1 account-number text-right">{{ $number() | mask }}</p>
 </div>

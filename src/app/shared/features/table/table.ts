@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { LowerCasePipe, NgClass } from '@angular/common';
 import { ColumnModel } from './column.model';
+import { MaskPipe } from '../../pipes/mask.pipe';
 
 @Component({
   selector: 'app-table',
-  imports: [NgClass, LowerCasePipe],
+  imports: [NgClass, LowerCasePipe, MaskPipe],
   templateUrl: './table.html',
   styleUrl: './table.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
