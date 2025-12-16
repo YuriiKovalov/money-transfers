@@ -1,11 +1,11 @@
 .circle-name {
   width: 32px;
   height: 32px;
-  background: var(--color-primary-blue);
+  background: var(--color-blue-600);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-primary-white);
+  color: var(--color-white);
   border-radius: 20px;
 }
 
@@ -15,5 +15,5 @@
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.1px;
-  color: var(--color-primary-dark);
+  color: var(--color-grey-900);
 }

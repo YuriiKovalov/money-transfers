@@ -41,7 +41,7 @@ export class IconDirective {
     element.style.setProperty('-webkit-mask-repeat', 'no-repeat');
     element.style.setProperty('-webkit-mask-position', 'center');
 
-    element.style.backgroundColor = 'var(--color-primary-dark)';
+    element.style.backgroundColor = 'var(--color-grey-900)';
     element.style.transition = 'background-color 0.2s ease';
   }
 }

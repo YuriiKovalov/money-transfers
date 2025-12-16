@@ -11,8 +11,8 @@ button {
   &.active,
   &:hover {
     font-weight: 600;
-    background: var(--color-primary-blue-light);
-    color: var(--color-primary-blue);
+    background: var(--color-blue-50);
+    color: var(--color-blue-600);
   }
 }
 

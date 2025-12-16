@@ -2,7 +2,7 @@
   border-radius: 16px;
   overflow: hidden;
   padding: 0 8px;
-  background: var(--color-background-table);
+  background: var(--color-grey-51);
 }
 
 table {
@@ -13,7 +13,7 @@ table {
 }
 
 tr {
-  background: var(--color-background-table);
+  background: var(--color-grey-51);
 }
 
 th,
@@ -21,7 +21,7 @@ td {
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.1px;
-  border-bottom: 1px solid var(--color-border-grey-2);
+  border-bottom: 1px solid var(--color-grey-301);
   text-align: left;
 }
 
@@ -32,7 +32,7 @@ tbody tr:last-child td {
 th {
   padding: 10px 16px;
   font-weight: 500;
-  color: var(--color-secondary-grey);
+  color: var(--color-grey-600);
 }
 
 td {
@@ -53,10 +53,10 @@ td {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.15px;
-    color: var(--color-secondary-grey);
+    color: var(--color-grey-600);
   }
 
   span {
-    background: var(--color-secondary-grey) !important;
+    background: var(--color-grey-600) !important;
   }
 }

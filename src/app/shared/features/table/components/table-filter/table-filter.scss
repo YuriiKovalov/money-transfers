@@ -1,12 +1,12 @@
 .wrapper {
   display: flex;
-  border: 1px solid var(--color-border-grey-3);
+  border: 1px solid var(--color-grey-500);
   border-radius: 100px;
   overflow: hidden;
 }
 
 button:not(:last-child) {
-  border-right: 1px solid var(--color-border-grey-3);
+  border-right: 1px solid var(--color-grey-500);
 }
 
 button {
@@ -27,8 +27,8 @@ button {
 
   &.active,
   &:hover {
-    background: var(--color-secondary-blue);
-    color: var(--color-secondary-blue-text);
+    background: var(--color-cyan-100);
+    color: var(--color-cyan-700);
   }
 }
 
