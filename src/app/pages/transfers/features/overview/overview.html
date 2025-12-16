@@ -17,14 +17,30 @@
       description="Add a bank account for wire deposits and withdrawals."
       buttonText="+ Add New Wire Account"
       icon="bank"
-    ></app-account-type>
+    >
+      <ul class="mt-4 space-y-2">
+        @for (account of $wireAccounts(); track account.maskedAccount) {
+          <li>
+            <app-account-item [label]="account.bankName" [number]="account.maskedAccount" />
+          </li>
+        }
+      </ul>
+    </app-account-type>
 
     <app-account-type
       title="Plaid Accounts (ACH)"
       description="Connect a bank account via Plaid for ACH transfers."
       buttonText="+ Connect New via Plaid"
       icon="plaid"
-    ></app-account-type>
+    >
+      <ul class="mt-4 space-y-2">
+        @for (account of $plaidAccounts(); track account.maskedAccount) {
+          <li>
+            <app-account-item [label]="account.bankName" [number]="account.maskedAccount" />
+          </li>
+        }
+      </ul>
+    </app-account-type>
   </div>
 </section>
 
