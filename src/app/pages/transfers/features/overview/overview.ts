@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -10,15 +10,22 @@ import { TRANSFERS_FILTER_OPTIONS } from '../../../../core/constants/transfers-f
 import { Table } from '../../../../shared/features/table/table';
 import { ColumnModel } from '../../../../shared/features/table/column.model';
 import { Transfer } from '../../../../core/api/models/transfers.models';
+import { AccountItem } from '../../../../shared/components/account-item/account-item';
 
 @Component({
   selector: 'app-transfers-overview',
-  imports: [ChartComponent, AccountType, TableFilter, ReactiveFormsModule, Table],
+  imports: [ChartComponent, AccountType, TableFilter, ReactiveFormsModule, Table, AccountItem],
   templateUrl: './overview.html',
   styles: [
     `
       section {
         margin-bottom: 80px;
+      }
+
+      .chart-wrapper {
+        height: 376px;
+        display: flex;
+        flex-direction: column;
       }
     `,
   ],
@@ -30,7 +37,7 @@ export class Overview {
     { label: 'Date', value: 'date' },
     { label: 'Type', value: 'type' },
     { label: 'Method', value: 'method' },
-    { label: 'Account', value: 'account' },
+    { label: 'Account', value: 'account', type: 'mask' },
     { label: 'Amount ($)', value: 'amount' },
     { label: 'Status', value: 'status', type: 'chip' },
   ];
@@ -38,8 +45,10 @@ export class Overview {
   private readonly facade = inject(TransfersFacade);
 
   readonly $filteredTransfers = this.facade.$filteredTransfers;
-  readonly $chartData = signal<number[]>([]);
-  readonly $chartLabels = signal<string[]>([]);
+  readonly $chartData = computed(() => this.facade.$chartPoints().map(point => point.value));
+  readonly $chartLabels = computed(() => this.facade.$chartPoints().map(point => point.label));
+  readonly $wireAccounts = this.facade.$wireAccounts;
+  readonly $plaidAccounts = this.facade.$plaidAccounts;
 
   readonly transfersFilterControl = new FormControl<string[]>(this.facade.$transferFilter());
 

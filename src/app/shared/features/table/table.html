@@ -19,6 +19,9 @@
                   </span>
                 </td>
               }
+              @case ('mask') {
+                <td>{{ row[column.value] | mask }}</td>
+              }
               @default {
                 <td>{{ row[column.value] }}</td>
               }
