@@ -2,11 +2,14 @@
   <app-header />
 
   <div class="flex flex-1 overflow-hidden">
-    <aside class="hidden lg:block h-full">
-      <app-sidebar class="h-full" />
+    @if ($sidebarOpen()) {
+      <div class="sidebar-backdrop fixed inset-0 z-40 lg:hidden" (click)="closeSidebar()"></div>
+    }
+    <aside class="sidebar-container" [class.sidebar-open]="$sidebarOpen()">
+      <app-sidebar />
     </aside>
 
-    <main class="flex-1 overflow-auto">
+    <main class="flex-1 overflow-auto py-4 ps-4 lg:ps-10">
       <router-outlet />
     </main>
   </div>
