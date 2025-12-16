@@ -10,7 +10,8 @@ import {
   viewChild,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Chart, ChartConfiguration, ChartType } from 'chart.js/auto';
+import { Chart, ChartType } from 'chart.js/auto';
+import { buildChartConfig } from './chart.util';
 
 @Component({
   selector: 'app-chart',
@@ -44,11 +45,10 @@ export class ChartComponent implements OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
 
-  chartCanvas = viewChild<ElementRef<HTMLCanvasElement>>('chartCanvas');
+  $chartCanvas = viewChild<ElementRef<HTMLCanvasElement>>('chartCanvas');
   $data = input.required<number[]>({ alias: 'data' });
   $labels = input.required<string[]>({ alias: 'labels' });
   $type = input<ChartType>('line', { alias: 'type' });
-  $title = input<string>('Account Balance', { alias: 'title' });
 
   private chart: Chart | null = null;
 
@@ -58,7 +58,7 @@ export class ChartComponent implements OnDestroy {
         return;
       }
 
-      const canvas = this.chartCanvas()?.nativeElement;
+      const canvas = this.$chartCanvas()?.nativeElement;
       const data = this.$data();
       const labels = this.$labels();
       const type = this.$type();
@@ -79,49 +79,7 @@ export class ChartComponent implements OnDestroy {
       this.chart.destroy();
     }
 
-    const config: ChartConfiguration = {
-      type,
-      data: {
-        labels,
-        datasets: [
-          {
-            data,
-            borderColor: '#1d40be', // var(--color-primary-blue)
-            borderWidth: 1,
-            backgroundColor: '#DDE1FF', // var(--color-primary-light)
-            fill: true,
-            pointBackgroundColor: '#1c40be', // var(--color-primary-blue)
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        layout: {
-          padding: 0,
-        },
-        plugins: {
-          legend: {
-            display: false,
-          },
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            ticks: {
-              maxTicksLimit: 7,
-              callback: function (value) {
-                const numValue = typeof value === 'number' ? value : Number(value);
-                if (numValue === 0) {
-                  return '0';
-                }
-                return numValue / 1000 + 'K';
-              },
-            },
-          },
-        },
-      },
-    };
+    const config = buildChartConfig(data, labels, type);
 
     this.chart = new Chart(canvas, config);
   }
