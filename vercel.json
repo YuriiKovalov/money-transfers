@@ -3,7 +3,7 @@
   "buildCommand": "npm run build",
   "functions": {
     "api/server.mjs": {
-      "runtime": "nodejs22.x"
+      "runtime": "nodejs18.x"
     }
   },
   "routes": [
