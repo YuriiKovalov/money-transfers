@@ -2,4 +2,4 @@
 @forward './assets/styles/base';
 @forward './assets/styles/typography';
 @forward './assets/styles/components';
-@import 'tailwindcss';
+@use 'tailwindcss';
