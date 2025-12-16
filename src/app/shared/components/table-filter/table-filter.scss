@@ -31,3 +31,20 @@ button {
     color: var(--color-secondary-blue-text);
   }
 }
+
+@media (max-width: 639px) {
+  .wrapper {
+    border-radius: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  button {
+    width: 80px;
+    height: 28px;
+    gap: 6px;
+    font-size: 12px;
+    line-height: 18px;
+    flex-shrink: 0;
+  }
+}

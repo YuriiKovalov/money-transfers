@@ -7,14 +7,23 @@ import { AccountType } from '../../../../shared/components/account-type/account-
 import { TableFilter } from '../../../../shared/components/table-filter/table-filter';
 import { TransfersFacade } from '../../data-access/transfers.facade';
 import { TRANSFERS_FILTER_OPTIONS } from '../../../../core/constants/transfers-filter.constants';
-import { Table } from '../../../../shared/features/table/table';
+import { Table } from '../../../../shared/features/table/components/table/table';
+import { TableCards } from '../../../../shared/features/table/components/table-cards/table-cards';
 import { ColumnModel } from '../../../../shared/features/table/column.model';
 import { Transfer } from '../../../../core/api/models/transfers.models';
 import { AccountItem } from '../../../../shared/components/account-item/account-item';
 
 @Component({
   selector: 'app-transfers-overview',
-  imports: [ChartComponent, AccountType, TableFilter, ReactiveFormsModule, Table, AccountItem],
+  imports: [
+    ChartComponent,
+    AccountType,
+    TableFilter,
+    ReactiveFormsModule,
+    Table,
+    TableCards,
+    AccountItem,
+  ],
   templateUrl: './overview.html',
   styles: [
     `

@@ -1,0 +1,11 @@
+<nav class="flex gap-1">
+  @for (tab of $tabs(); track tab.route) {
+    <button
+      type="button"
+      [class.active]="$activeTab() === tab.route"
+      (click)="onTabClick(tab.route)"
+    >
+      {{ tab.label }}
+    </button>
+  }
+</nav>

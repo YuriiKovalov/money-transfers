@@ -1,6 +1,6 @@
 <h2>Account Balance</h2>
 
-<section class="card-rounded px-4 py-6 chart-wrapper">
+<section class="card-rounded px-2 sm:px-4 py-3 sm:py-6 chart-wrapper">
   <div class="flex justify-between items-center mb-4">
     <h3>Cash Available to Trade</h3>
     <button type="button" class="button-secondary">Last 90 days</button>
@@ -11,7 +11,7 @@
 <h2>Connected Accounts</h2>
 
 <section>
-  <div class="grid grid-cols-2 gap-6">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
     <app-account-type
       title="Wire Accounts"
       description="Add a bank account for wire deposits and withdrawals."
@@ -46,10 +46,13 @@
 
 <h2>Recent Transfers</h2>
 
-<section class="card-rounded p-4">
-  <div class="flex justify-between items-center mb-6">
+<section class="card-rounded p-2 sm:p-4">
+  <div
+    class="flex flex-col-reverse gap-4 sm:flex-row justify-between items-end sm:items-center mb-6"
+  >
     <app-table-filter [options]="filterOptions" [formControl]="transfersFilterControl" />
     <button type="button" class="button-secondary">Last 7 days</button>
   </div>
-  <app-table [data]="$filteredTransfers()" [columns]="chartColumns" />
+  <app-table-cards [data]="$filteredTransfers()" [columns]="chartColumns" class="block md:hidden" />
+  <app-table [data]="$filteredTransfers()" [columns]="chartColumns" class="hidden md:block" />
 </section>
