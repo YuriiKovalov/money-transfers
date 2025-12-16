@@ -31,8 +31,9 @@
 <h2>Recent Transfers</h2>
 
 <section class="card-rounded p-4">
-  <div class="flex justify-between items-center">
+  <div class="flex justify-between items-center mb-6">
     <app-table-filter [options]="filterOptions" [formControl]="transfersFilterControl" />
     <button type="button" class="button-secondary">Last 7 days</button>
   </div>
+  <app-table [data]="$filteredTransfers()" [columns]="chartColumns" />
 </section>
