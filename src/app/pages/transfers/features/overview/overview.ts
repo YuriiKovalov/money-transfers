@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -44,13 +44,13 @@ export class Overview {
 
   private readonly facade = inject(TransfersFacade);
 
-  readonly $filteredTransfers = this.facade.$filteredTransfers;
-  readonly $chartData = computed(() => this.facade.$chartPoints().map(point => point.value));
-  readonly $chartLabels = computed(() => this.facade.$chartPoints().map(point => point.label));
+  readonly $filteredTransfers = this.facade.$transfers;
+  readonly $chartData = this.facade.$chartData;
+  readonly $chartLabels = this.facade.$chartLabels;
   readonly $wireAccounts = this.facade.$wireAccounts;
   readonly $plaidAccounts = this.facade.$plaidAccounts;
 
-  readonly transfersFilterControl = new FormControl<string[]>(this.facade.$transferFilter());
+  readonly transfersFilterControl = new FormControl<string[]>(this.facade.$filter());
 
   constructor() {
     this.listenTableFilterChange();

@@ -1,5 +1,5 @@
 import { Injectable, computed, inject } from '@angular/core';
-import { forkJoin, take } from 'rxjs';
+import { take } from 'rxjs';
 import { TransfersClient } from '../../../core/api/clients/transfers.client';
 import { TransfersStore } from './transfers.store';
 
@@ -9,31 +9,37 @@ export class TransfersFacade {
   private readonly client = inject(TransfersClient);
 
   readonly $loading = this.store.loading;
-  readonly $chartPoints = this.store.chartPoints;
-  readonly $connectedAccounts = this.store.connectedAccounts;
-  readonly $wireAccounts = computed(() => this.store.connectedAccounts()?.wireAccounts ?? []);
-  readonly $plaidAccounts = computed(() => this.store.connectedAccounts()?.plaidAccounts ?? []);
-  readonly $filteredTransfers = this.store.filteredTransfers;
-  readonly $transferFilter = this.store.transferFilter;
+  readonly $filter = this.store.transferFilter;
+  readonly $transfers = this.store.filteredTransfers;
+  readonly $wireAccounts = computed(() => this.store.connectedAccounts()?.wireAccounts);
+  readonly $plaidAccounts = computed(() => this.store.connectedAccounts()?.plaidAccounts);
+  readonly $chartData = computed(() => this.store.chartPoints().map(point => point.value));
+  readonly $chartLabels = computed(() => this.store.chartPoints().map(point => point.label));
 
   updateTransferFilter(filter: string[]): void {
     this.store.updateTransferFilter(filter);
   }
 
   initOverview() {
-    forkJoin({
-      accountBalance: this.client.getAccountBalance(),
-      connectedAccounts: this.client.getConnectedAccounts(),
-      recentTransfers: this.client.getRecentTransfers(),
-    })
+    this.store.updateLoading(true);
+    this.client
+      .getOverviewData()
       .pipe(take(1))
-      .subscribe(responses => {
-        const { accountBalance, connectedAccounts, recentTransfers } = responses;
-        this.store.updateOverview({
+      .subscribe(({ accountBalance, connectedAccounts, recentTransfers }) => {
+        this.store.setData({
           chartPoints: accountBalance.points,
           connectedAccounts,
           transfers: recentTransfers.transfers,
         });
+        this.store.updateLoading(false);
       });
+  }
+
+  toggleDataVisibility(isVisible: boolean): void {
+    if (isVisible) {
+      this.initOverview();
+    } else {
+      this.store.resetData();
+    }
   }
 }

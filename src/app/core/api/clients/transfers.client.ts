@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { delay, of } from 'rxjs';
+import { delay, forkJoin, of } from 'rxjs';
 import {
   AccountBalanceResponse,
   ConnectedAccountsResponse,
@@ -13,18 +13,26 @@ import recentTransfersMock from '../mocks/recent-transfers.mock.json';
   providedIn: 'root',
 })
 export class TransfersClient {
-  getAccountBalance() {
+  private getAccountBalance() {
     const response = accountBalanceMock as AccountBalanceResponse;
     return of(response).pipe(delay(300));
   }
 
-  getConnectedAccounts() {
+  private getConnectedAccounts() {
     const response = connectedAccountsMock as ConnectedAccountsResponse;
     return of(response).pipe(delay(300));
   }
 
-  getRecentTransfers() {
+  private getRecentTransfers() {
     const response = recentTransfersMock as RecentTransfersResponse;
     return of(response).pipe(delay(300));
+  }
+
+  getOverviewData() {
+    return forkJoin({
+      accountBalance: this.getAccountBalance(),
+      connectedAccounts: this.getConnectedAccounts(),
+      recentTransfers: this.getRecentTransfers(),
+    });
   }
 }
