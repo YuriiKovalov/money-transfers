@@ -4,14 +4,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { ChartComponent } from '../../../../shared/features/chart/chart';
 import { AccountType } from '../../../../shared/components/account-type/account-type';
-import { TableFilter } from '../../../../shared/components/table-filter/table-filter';
-import { TransfersFacade } from '../../data-access/transfers.facade';
-import { TRANSFERS_FILTER_OPTIONS } from '../../../../core/constants/transfers-filter.constants';
+import { TableFilter } from '../../../../shared/features/table/components/table-filter/table-filter';
+import { TransfersFacade } from '../../services/transfers.facade';
+import { TRANSFERS_FILTER_OPTIONS } from '../../constants/transfers-filter.constants';
 import { Table } from '../../../../shared/features/table/components/table/table';
 import { TableCards } from '../../../../shared/features/table/components/table-cards/table-cards';
-import { ColumnModel } from '../../../../shared/features/table/column.model';
-import { Transfer } from '../../../../core/api/models/transfers.models';
 import { AccountItem } from '../../../../shared/components/account-item/account-item';
+import { TRANSFERS_TABLE_COLUMNS } from '../../constants/transfers-table-columns.constants';
 
 @Component({
   selector: 'app-transfers-overview',
@@ -42,14 +41,7 @@ import { AccountItem } from '../../../../shared/components/account-item/account-
 })
 export class Overview {
   readonly filterOptions = TRANSFERS_FILTER_OPTIONS;
-  readonly chartColumns: ColumnModel<keyof Transfer>[] = [
-    { label: 'Date', value: 'date' },
-    { label: 'Type', value: 'type' },
-    { label: 'Method', value: 'method' },
-    { label: 'Account', value: 'account', type: 'mask' },
-    { label: 'Amount ($)', value: 'amount' },
-    { label: 'Status', value: 'status', type: 'chip' },
-  ];
+  readonly columns = TRANSFERS_TABLE_COLUMNS;
 
   private readonly facade = inject(TransfersFacade);
 

@@ -8,8 +8,8 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { SignalControlValueAccessor } from '../../../core/classes/signal-control-value-accessor';
-import { IconDirective } from '../../directives/icon.directive';
+import { SignalControlValueAccessor } from '../../../../classes/signal-control-value-accessor';
+import { IconDirective } from '../../../../directives/icon.directive';
 
 @Component({
   selector: 'app-table-filter',

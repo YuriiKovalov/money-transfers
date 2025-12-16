@@ -8,7 +8,6 @@ export class TransfersFacade {
   private readonly store = inject(TransfersStore);
   private readonly client = inject(TransfersClient);
 
-  readonly $loading = this.store.loading;
   readonly $filter = this.store.transferFilter;
   readonly $transfers = this.store.filteredTransfers;
   readonly $wireAccounts = computed(() => this.store.connectedAccounts()?.wireAccounts);
@@ -21,7 +20,6 @@ export class TransfersFacade {
   }
 
   initOverview() {
-    this.store.updateLoading(true);
     this.client
       .getOverviewData()
       .pipe(take(1))
@@ -31,7 +29,6 @@ export class TransfersFacade {
           connectedAccounts,
           transfers: recentTransfers.transfers,
         });
-        this.store.updateLoading(false);
       });
   }
 

@@ -5,10 +5,9 @@ import {
   Transfer,
 } from '../../../core/api/models/transfers.models';
 import { computed } from '@angular/core';
-import { TRANSFERS_FILTER_OPTIONS } from '../../../core/constants/transfers-filter.constants';
+import { TRANSFERS_FILTER_OPTIONS } from '../constants/transfers-filter.constants';
 
 type TransfersState = {
-  loading: boolean;
   chartPoints: AccountBalancePoint[];
   connectedAccounts: ConnectedAccountsResponse | null;
   transfers: Transfer[];
@@ -16,7 +15,6 @@ type TransfersState = {
 };
 
 const initialState: TransfersState = {
-  loading: false,
   chartPoints: [],
   connectedAccounts: null,
   transfers: [],
@@ -26,9 +24,6 @@ const initialState: TransfersState = {
 export const TransfersStore = signalStore(
   withState<TransfersState>(initialState),
   withMethods(store => ({
-    updateLoading(loading: boolean): void {
-      patchState(store, { loading });
-    },
     updateTransferFilter(filter: string[]): void {
       patchState(store, { transferFilter: filter });
     },
