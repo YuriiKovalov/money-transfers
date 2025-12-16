@@ -32,7 +32,7 @@ export const TransfersStore = signalStore(
     updateTransferFilter(filter: string[]): void {
       patchState(store, { transferFilter: filter });
     },
-    updateOverview(payload: {
+    setData(payload: {
       chartPoints: AccountBalancePoint[];
       connectedAccounts: ConnectedAccountsResponse;
       transfers: Transfer[];
@@ -42,6 +42,9 @@ export const TransfersStore = signalStore(
         connectedAccounts: payload.connectedAccounts,
         transfers: payload.transfers,
       });
+    },
+    resetData(): void {
+      patchState(store, initialState);
     },
   })),
   withComputed(store => ({

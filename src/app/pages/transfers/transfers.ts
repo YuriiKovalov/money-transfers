@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter, map } from 'rxjs';
 import { TRANSFERS_ROUTES } from '../../core/constants/routes.constants';
 import { TabsComponent } from '../../shared/components/tabs/tabs';
 import { TRANSFERS_NAVIGATION_ITEMS } from '../../core/constants/transfers-nav.constants';
+import { DataVisibilityService } from '../../core/services/data-visibility.service';
 import { TransfersFacade } from './data-access/transfers.facade';
 import { TransfersStore } from './data-access/transfers.store';
 
@@ -20,6 +21,7 @@ export class Transfers {
   private readonly router = inject(Router);
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly facade = inject(TransfersFacade);
+  private readonly visibilityService = inject(DataVisibilityService);
 
   readonly tabs = TRANSFERS_NAVIGATION_ITEMS;
 
@@ -33,6 +35,7 @@ export class Transfers {
 
   constructor() {
     this.facade.initOverview();
+    this.listenDataVisibilityEffect();
   }
 
   onTabChange(route: string): void {
@@ -42,5 +45,11 @@ export class Transfers {
   private getActiveRoute(): string {
     const childRoute = this.activatedRoute.firstChild;
     return childRoute?.snapshot?.url?.[0]?.path || TRANSFERS_ROUTES.OVERVIEW;
+  }
+
+  private listenDataVisibilityEffect() {
+    effect(() => {
+      this.facade.toggleDataVisibility(this.visibilityService.$hasData());
+    });
   }
 }

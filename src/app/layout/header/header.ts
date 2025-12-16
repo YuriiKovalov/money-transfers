@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { DataVisibilityService } from '../../core/services/data-visibility.service';
 
 @Component({
   selector: 'app-header',
   imports: [],
   template: `
-    <header class="flex items-center">
+    <header class="flex items-center justify-between">
       <div class="logo-wrapper mx-4">
         <img
           src="assets/images/logo-st-dark.svg"
@@ -12,6 +13,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           class="h-full w-auto object-contain"
         />
       </div>
+      <button type="button" class="button-secondary mx-4" (click)="toggleData()">
+        {{ $hasData() ? 'Hide Data' : 'Show Data' }}
+      </button>
     </header>
   `,
   styles: [
@@ -29,4 +33,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Header {}
+export class Header {
+  private readonly visibilityService = inject(DataVisibilityService);
+
+  readonly $hasData = this.visibilityService.$hasData;
+
+  toggleData(): void {
+    this.visibilityService.toggle();
+  }
+}
