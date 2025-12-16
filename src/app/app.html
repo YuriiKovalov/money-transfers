@@ -5,7 +5,7 @@
     @if ($sidebarOpen()) {
       <div class="sidebar-backdrop fixed inset-0 z-40 lg:hidden" (click)="closeSidebar()"></div>
     }
-    <aside class="hidden lg:block" [class.sidebar-open]="$sidebarOpen()">
+    <aside class="sidebar-container" [class.sidebar-open]="$sidebarOpen()">
       <app-sidebar />
     </aside>
 
