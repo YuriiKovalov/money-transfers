@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { LowerCasePipe, NgClass } from '@angular/common';
-import { ColumnModel } from '../../column.model';
+import { ColumnModel } from '../../models/column.model';
 import { MaskPipe } from '../../../../pipes/mask.pipe';
 import { IconDirective } from '../../../../directives/icon.directive';
 

@@ -53,6 +53,6 @@
     <app-table-filter [options]="filterOptions" [formControl]="transfersFilterControl" />
     <button type="button" class="button-secondary">Last 7 days</button>
   </div>
-  <app-table-cards [data]="$filteredTransfers()" [columns]="chartColumns" class="block md:hidden" />
-  <app-table [data]="$filteredTransfers()" [columns]="chartColumns" class="hidden md:block" />
+  <app-table-cards [data]="$filteredTransfers()" [columns]="columns" class="block md:hidden" />
+  <app-table [data]="$filteredTransfers()" [columns]="columns" class="hidden md:block" />
 </section>

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { TRANSFERS_ROUTES } from '../../core/constants/routes.constants';
 import { Transfers } from './transfers';
+import { TRANSFERS_ROUTES } from './constants/transfers-routes.constants';
 
 export const transfersRoutes: Routes = [
   {
@@ -14,19 +14,19 @@ export const transfersRoutes: Routes = [
       },
       {
         path: TRANSFERS_ROUTES.OVERVIEW,
-        loadComponent: () => import('./features/overview/overview').then(m => m.Overview),
+        loadComponent: () => import('./tabs/overview/overview').then(m => m.Overview),
       },
       {
         path: TRANSFERS_ROUTES.DEPOSIT,
-        loadComponent: () => import('./features/deposit/deposit').then(m => m.Deposit),
+        loadComponent: () => import('./tabs/deposit/deposit').then(m => m.Deposit),
       },
       {
         path: TRANSFERS_ROUTES.WITHDRAW,
-        loadComponent: () => import('./features/withdraw/withdraw').then(m => m.Withdraw),
+        loadComponent: () => import('./tabs/withdraw/withdraw').then(m => m.Withdraw),
       },
       {
         path: TRANSFERS_ROUTES.HISTORY,
-        loadComponent: () => import('./features/history/history').then(m => m.History),
+        loadComponent: () => import('./tabs/history/history').then(m => m.History),
       },
     ],
   },

@@ -1,5 +1,5 @@
-import { TRANSFERS_ROUTES } from './routes.constants';
-import { NavigationItem } from '../models/navigation-item.interface';
+import { NavigationItem } from '../../../core/models/navigation-item.interface';
+import { TRANSFERS_ROUTES } from './transfers-routes.constants';
 
 export const TRANSFERS_NAVIGATION_ITEMS: NavigationItem[] = [
   { label: 'Overview', route: TRANSFERS_ROUTES.OVERVIEW },

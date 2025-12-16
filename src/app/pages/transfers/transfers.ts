@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/cor
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter, map } from 'rxjs';
-import { TRANSFERS_ROUTES } from '../../core/constants/routes.constants';
 import { TabsComponent } from '../../shared/components/tabs/tabs';
-import { TRANSFERS_NAVIGATION_ITEMS } from '../../core/constants/transfers-nav.constants';
+import { TRANSFERS_NAVIGATION_ITEMS } from './constants/transfers-nav.constants';
 import { DataVisibilityService } from '../../core/services/data-visibility.service';
-import { TransfersFacade } from './data-access/transfers.facade';
-import { TransfersStore } from './data-access/transfers.store';
+import { TransfersFacade } from './services/transfers.facade';
+import { TransfersStore } from './services/transfers.store';
+import { TRANSFERS_ROUTES } from './constants/transfers-routes.constants';
 
 @Component({
   selector: 'app-transfers',

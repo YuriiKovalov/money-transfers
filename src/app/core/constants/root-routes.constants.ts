@@ -1,4 +1,4 @@
-export const ROUTES = {
+export const ROOT_ROUTES = {
   ROOT: '',
   DASHBOARD: 'dashboard',
   POSITIONS: 'positions',
@@ -10,11 +10,4 @@ export const ROUTES = {
   REFERRALS: 'referrals',
   SUPPORT: 'support',
   DISCLOSURES: 'disclosures',
-} as const;
-
-export const TRANSFERS_ROUTES = {
-  OVERVIEW: 'overview',
-  DEPOSIT: 'deposit',
-  WITHDRAW: 'withdraw',
-  HISTORY: 'history',
 } as const;
