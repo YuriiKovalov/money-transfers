@@ -4,9 +4,10 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root',
 })
 export class DataVisibilityService {
-  readonly $hasData = signal<boolean>(true);
+  private $hasDataSource = signal<boolean>(true);
+  readonly $hasData = this.$hasDataSource.asReadonly();
 
   toggle(): void {
-    this.$hasData.update(value => !value);
+    this.$hasDataSource.update(value => !value);
   }
 }
