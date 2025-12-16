@@ -30,23 +30,7 @@ import { IconDirective } from '../../shared/directives/icon.directive';
       </button>
     </header>
   `,
-  styles: [
-    `
-      header {
-        height: var(--header-height);
-        background-color: var(--color-background-header);
-      }
-
-      .logo-wrapper {
-        max-width: 80px;
-        max-height: 30px;
-      }
-
-      .icon {
-        background-color: var(--color-primary-white) !important;
-      }
-    `,
-  ],
+  styleUrl: './header.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Header {
