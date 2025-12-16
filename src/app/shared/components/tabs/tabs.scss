@@ -1,0 +1,27 @@
+button {
+  cursor: pointer;
+  width: 96px;
+  border-radius: 20px;
+  padding: 10px 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+
+  &.active,
+  &:hover {
+    font-weight: 600;
+    background: var(--color-primary-blue-light);
+    color: var(--color-primary-blue);
+  }
+}
+
+@media (max-width: 639px) {
+  button {
+    width: 80px;
+    border-radius: 16px;
+    padding: 8px 0;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}

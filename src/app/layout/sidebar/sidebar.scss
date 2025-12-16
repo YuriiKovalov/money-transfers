@@ -1,6 +1,10 @@
 nav {
   background-color: var(--color-background-sidebar);
   width: var(--sidebar-width);
+
+  @media (max-width: 639px) {
+    width: var(--sidebar-width-mobile);
+  }
 }
 
 a {

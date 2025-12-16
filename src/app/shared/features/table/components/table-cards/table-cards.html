@@ -1,0 +1,35 @@
+<div class="cards-wrapper px-2 py-3">
+  @if ($data().length > 0) {
+    @for (row of $data(); track row) {
+      <div class="table-card card-rounded p-4">
+        <div class="grid grid-cols-2 gap-1">
+          @for (column of $columns(); track column.value; let i = $index) {
+            <div class="flex flex-col wrap-content" [class.text-right]="i % 2 === 1">
+              <p>{{ column.label }}</p>
+              <h4>
+                @switch (column.type) {
+                  @case ('chip') {
+                    <span [ngClass]="['chip', 'chip--' + ($any(row)[column.value] | lowercase)]">
+                      {{ row[column.value] }}
+                    </span>
+                  }
+                  @case ('mask') {
+                    <span>{{ row[column.value] | mask }}</span>
+                  }
+                  @default {
+                    <span>{{ row[column.value] }}</span>
+                  }
+                }
+              </h4>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  } @else {
+    <div class="empty-message">
+      <span icon="clock" size="24px"></span>
+      <p>You don't have any recent transfers yet.</p>
+    </div>
+  }
+</div>

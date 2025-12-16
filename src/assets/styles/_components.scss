@@ -50,3 +50,28 @@
     color: var(--color-reject-text-red);
   }
 }
+
+@media (max-width: 639px) {
+  .button-link {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 5px 10px;
+  }
+
+  .button-secondary {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 5px 10px;
+    border-radius: 6px;
+  }
+
+  .card-rounded {
+    border-radius: 16px;
+  }
+
+  .chip {
+    font-size: 11px;
+    line-height: 14px;
+    padding: 2px 6px;
+  }
+}

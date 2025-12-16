@@ -31,3 +31,31 @@ p {
   letter-spacing: 0.15px;
   color: var(--color-secondary-grey);
 }
+
+@media (max-width: 639px) {
+  h1 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  h2 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  h4 {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  p {
+    font-size: 11px;
+    line-height: 18px;
+  }
+}
