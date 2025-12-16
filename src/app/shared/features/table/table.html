@@ -8,25 +8,36 @@
       </tr>
     </thead>
     <tbody>
-      @for (row of $data(); track row) {
-        <tr>
-          @for (column of $columns(); track column.value) {
-            @switch (column.type) {
-              @case ('chip') {
-                <td>
-                  <span [ngClass]="['chip', 'chip--' + ($any(row)[column.value] | lowercase)]">
-                    {{ row[column.value] }}
-                  </span>
-                </td>
-              }
-              @case ('mask') {
-                <td>{{ row[column.value] | mask }}</td>
-              }
-              @default {
-                <td>{{ row[column.value] }}</td>
+      @if ($data().length > 0) {
+        @for (row of $data(); track row) {
+          <tr>
+            @for (column of $columns(); track column.value) {
+              @switch (column.type) {
+                @case ('chip') {
+                  <td>
+                    <span [ngClass]="['chip', 'chip--' + ($any(row)[column.value] | lowercase)]">
+                      {{ row[column.value] }}
+                    </span>
+                  </td>
+                }
+                @case ('mask') {
+                  <td>{{ row[column.value] | mask }}</td>
+                }
+                @default {
+                  <td>{{ row[column.value] }}</td>
+                }
               }
             }
-          }
+          </tr>
+        }
+      } @else {
+        <tr>
+          <td [attr.colspan]="$columns().length">
+            <div class="empty-message">
+              <span icon="clock" size="24px"></span>
+              <p>You don't have any recent transfers yet.</p>
+            </div>
+          </td>
         </tr>
       }
     </tbody>
