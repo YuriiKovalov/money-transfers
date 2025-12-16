@@ -6,30 +6,7 @@ import { IconDirective } from '../../shared/directives/icon.directive';
 @Component({
   selector: 'app-header',
   imports: [IconDirective],
-  template: `
-    <header class="flex items-center justify-between">
-      <div class="flex items-center">
-        <span
-          icon="menu"
-          size="24px"
-          class="icon mx-4 lg:hidden"
-          role="button"
-          (click)="openSidebar()"
-        ></span>
-
-        <div class="logo-wrapper mx-4">
-          <img
-            src="assets/images/logo-st-dark.svg"
-            alt="SAGE TRADER"
-            class="h-full w-auto object-contain"
-          />
-        </div>
-      </div>
-      <button type="button" class="button-secondary mx-4" (click)="toggleData()">
-        {{ $hasData() ? 'Hide Data' : 'Show Data' }}
-      </button>
-    </header>
-  `,
+  templateUrl: './header.html',
   styleUrl: './header.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
