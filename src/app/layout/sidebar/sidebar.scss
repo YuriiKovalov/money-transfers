@@ -1,5 +1,5 @@
 nav {
-  background-color: var(--color-background-sidebar);
+  background-color: var(--color-grey-100);
   width: var(--sidebar-width);
 
   @media (max-width: 639px) {
@@ -22,14 +22,14 @@ li {
   &.active,
   &:hover {
     font-weight: 600;
-    color: var(--color-primary-purple);
+    color: var(--color-purple-600);
 
     a {
-      background-color: var(--color-primary-light);
+      background-color: var(--color-blue-100);
     }
 
     .icon {
-      background-color: var(--color-primary-purple) !important;
+      background-color: var(--color-purple-600) !important;
     }
   }
 }

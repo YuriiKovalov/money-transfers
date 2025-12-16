@@ -12,11 +12,11 @@ export function buildChartConfig(
       datasets: [
         {
           data,
-          borderColor: '#1d40be', // var(--color-primary-blue)
+          borderColor: '#1d40be',
           borderWidth: 1,
-          backgroundColor: '#DDE1FF', // var(--color-primary-light)
+          backgroundColor: '#DDE1FF',
           fill: true,
-          pointBackgroundColor: '#1c40be', // var(--color-primary-blue)
+          pointBackgroundColor: '#1c40be',
         },
       ],
     },

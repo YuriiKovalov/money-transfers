@@ -1,6 +1,6 @@
 .cards-wrapper {
   min-height: 150px;
-  background: var(--color-background-table);
+  background: var(--color-grey-51);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,10 +21,10 @@
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.15px;
-    color: var(--color-secondary-grey);
+    color: var(--color-grey-600);
   }
 
   span {
-    background: var(--color-secondary-grey) !important;
+    background: var(--color-grey-600) !important;
   }
 }

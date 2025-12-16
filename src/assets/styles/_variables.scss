@@ -1,30 +1,33 @@
 :root {
-  --color-primary-dark: #1b1b21;
-  --color-primary-purple: #374379;
-  --color-primary-purple-middle: #e9e7ef;
-  --color-primary-purple-light: #f5f2fa;
-  --color-primary-blue: #1c40be;
-  --color-primary-blue-light: #1c40be1a;
-  --color-primary-light: #dde1ff;
-  --color-primary-white: #ffffff;
+  --color-grey-900: #1b1b21;
+  --color-grey-600: #45464f;
+  --color-grey-500: #767680;
+  --color-grey-301: #c6c5d0;
+  --color-grey-300: #d1d5dc;
+  --color-grey-100: #f3f4f6;
+  --color-grey-51: #f5f5f7;
+  --color-grey-50: #f9fafb;
 
-  --color-secondary-grey: #45464f;
-  --color-secondary-blue: #c2e8ff;
-  --color-secondary-blue-text: #004d67;
+  --color-purple-600: #374379;
+  --color-purple-100: #e9e7ef;
+  --color-purple-50: #f5f2fa;
 
-  --color-background-body: #f9fafb;
-  --color-background-header: #1b243d;
-  --color-background-sidebar: #f3f4f6;
-  --color-background-table: #f5f5f7;
+  --color-blue-600: #1c40be;
+  --color-blue-100: #dde1ff;
+  --color-blue-50: #1c40be1a;
 
-  --color-border-grey-1: #d1d5dc;
-  --color-border-grey-2: #c6c5d0;
-  --color-border-grey-3: #767680;
+  --color-cyan-700: #004d67;
+  --color-cyan-100: #c2e8ff;
 
-  --color-success-bg--green: #c2efad;
-  --color-reject-bg-red: #ffdad6;
-  --color-success-text-green: #2b4f1e;
-  --color-reject-text-red: #93000a;
+  --color-navy-900: #1b243d;
+
+  --color-green-800: #2b4f1e;
+  --color-green-100: #c2efad;
+
+  --color-red-800: #93000a;
+  --color-red-100: #ffdad6;
+
+  --color-white: #ffffff;
 
   /* SIZES */
   --sidebar-width: 112px;

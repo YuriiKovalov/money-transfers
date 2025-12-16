@@ -3,7 +3,7 @@
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.1px;
-  color: var(--color-primary-blue);
+  color: var(--color-blue-600);
   cursor: pointer;
   padding: 6px 12px;
 }
@@ -16,14 +16,14 @@
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.1px;
-  color: var(--color-secondary-grey);
-  background: var(--color-primary-purple-light);
+  color: var(--color-grey-600);
+  background: var(--color-purple-50);
 }
 
 .card-rounded {
   border-radius: 24px;
-  border: 0.5px solid var(--color-border-grey-2);
-  background: var(--color-primary-white);
+  border: 0.5px solid var(--color-grey-301);
+  background: var(--color-white);
 }
 
 .chip {
@@ -35,19 +35,19 @@
   letter-spacing: 0.15px;
 
   &--pending {
-    background: var(--color-background-table);
-    color: var(--color-secondary-grey);
-    border: 1px solid var(--color-border-grey-2);
+    background: var(--color-grey-51);
+    color: var(--color-grey-600);
+    border: 1px solid var(--color-grey-301);
   }
 
   &--completed {
-    background: var(--color-success-bg--green);
-    color: var(--color-success-text-green);
+    background: var(--color-green-100);
+    color: var(--color-green-800);
   }
 
   &--rejected {
-    background: var(--color-reject-bg-red);
-    color: var(--color-reject-text-red);
+    background: var(--color-red-100);
+    color: var(--color-red-800);
   }
 }
 
