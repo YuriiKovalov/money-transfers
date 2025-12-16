@@ -1,59 +1,68 @@
-# MoneyTransfers
+# Money Transfers Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.7.
+Server Side Rendering
 
-## Development server
+## 🌐 Live Demo
 
-To start a local development server, run:
+**Production:** [https://money-transfers.vercel.app](https://money-transfers.vercel.app)
 
-```bash
-ng serve
-```
+**Example Page:** [https://money-transfers.vercel.app/transfers/overview](https://money-transfers.vercel.app/transfers/overview)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🚀 Quick Start
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Installation
 
 ```bash
-ng generate component component-name
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Development
 
 ```bash
-ng generate --help
+npm start
 ```
 
-## Building
+Navigate to `http://localhost:4200/`
 
-To build the project run:
+## 📐 Architecture
 
-```bash
-ng build
+### Project Structure
+
+```
+src/app/
+├── core/                          # Core application functionality
+│   ├── api/                       # API layer
+│   │   ├── clients/               # HTTP clients (transfers.client.ts)
+│   │   ├── mocks/                 # Mock data for development
+│   │   └── models/                # API response models
+│   ├── constants/                 # Application-wide constants
+│   ├── models/                    # Shared interfaces and types
+│   └── services/                  # Global services
+│
+├── layout/                        # Layout components
+├── pages/                         # Feature modules
+│   └── transfers/                 # Transfers feature module
+│       ├── constants/             # Feature-specific constants
+│       ├── services/              # Feature services
+│       │   ├── transfers.facade.ts    # Facade pattern
+│       │   └── transfers.store.ts     # NgRx Signals store
+│       ├── tabs/                  # Feature sub-routes
+│       └── transfers.routes.ts   # Feature routing
+└── shared/                        # Reusable code
+    ├── classes/                   # Help classes
+    ├── components/                # Shared UI components
+    ├── directives/                # Custom directives
+    ├── features/                  # Complex feature modules
+    └── pipes/                     # Custom pipes
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Code Quality
 
-## Running unit tests
+- **ESLint**: Angular-specific linting rules
+- **Prettier**: Code formatting
+- **Husky + lint-staged**: Pre-commit hooks for quality checks
+- **TypeScript Strict Mode**: Maximum type safety
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 🔒 Hide Data Feature
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The "Hide Data" button in the header demonstrates empty state handling. When clicked, it clears all data from the store, showing how the application handles empty states gracefully.
