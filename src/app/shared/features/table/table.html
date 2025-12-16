@@ -1,0 +1,31 @@
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        @for (column of $columns(); track column.label) {
+          <th>{{ column.label }}</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of $data(); track row) {
+        <tr>
+          @for (column of $columns(); track column.value) {
+            @switch (column.type) {
+              @case ('chip') {
+                <td>
+                  <span [ngClass]="['chip', 'chip--' + ($any(row)[column.value] | lowercase)]">
+                    {{ row[column.value] }}
+                  </span>
+                </td>
+              }
+              @default {
+                <td>{{ row[column.value] }}</td>
+              }
+            }
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

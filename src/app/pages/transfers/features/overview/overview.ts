@@ -2,12 +2,14 @@ import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@ang
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { ChartComponent } from '../../../../shared/components/chart/chart';
+import { ChartComponent } from '../../../../shared/features/chart/chart';
 import { AccountType } from '../../../../shared/components/account-type/account-type';
 import { TableFilter } from '../../../../shared/components/table-filter/table-filter';
 import { TransfersFacade } from '../../data-access/transfers.facade';
 import { TRANSFERS_FILTER_OPTIONS } from '../../../../core/constants/transfers-filter.constants';
-import { Table } from '../../../../shared/components/table/table';
+import { Table } from '../../../../shared/features/table/table';
+import { ColumnModel } from '../../../../shared/features/table/column.model';
+import { Transfer } from '../../../../core/api/models/transfers.models';
 
 @Component({
   selector: 'app-transfers-overview',
@@ -24,13 +26,13 @@ import { Table } from '../../../../shared/components/table/table';
 })
 export class Overview {
   readonly filterOptions = TRANSFERS_FILTER_OPTIONS;
-  readonly chartColumns = [
+  readonly chartColumns: ColumnModel<keyof Transfer>[] = [
     { label: 'Date', value: 'date' },
     { label: 'Type', value: 'type' },
     { label: 'Method', value: 'method' },
     { label: 'Account', value: 'account' },
-    { label: 'Amount($)', value: 'amount' },
-    { label: 'Status', value: 'status' },
+    { label: 'Amount ($)', value: 'amount' },
+    { label: 'Status', value: 'status', type: 'chip' },
   ];
 
   private readonly facade = inject(TransfersFacade);
