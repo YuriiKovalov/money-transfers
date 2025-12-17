@@ -2,6 +2,7 @@
   @for (tab of $tabs(); track tab.route) {
     <button
       type="button"
+      class="transition-colors duration-300"
       [class.active]="$activeTab() === tab.route"
       (click)="onTabClick(tab.route)"
     >
