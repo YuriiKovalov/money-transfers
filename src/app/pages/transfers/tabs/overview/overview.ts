@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -11,6 +11,7 @@ import { Table } from '../../../../shared/features/table/components/table/table'
 import { TableCards } from '../../../../shared/features/table/components/table-cards/table-cards';
 import { AccountItem } from '../../../../shared/components/account-item/account-item';
 import { TRANSFERS_TABLE_COLUMNS } from '../../constants/transfers-table-columns.constants';
+import { TransferFilter } from '../../models/filter.type';
 
 @Component({
   selector: 'app-transfers-overview',
@@ -51,10 +52,21 @@ export class Overview {
   readonly $wireAccounts = this.facade.$wireAccounts;
   readonly $plaidAccounts = this.facade.$plaidAccounts;
 
-  readonly transfersFilterControl = new FormControl<string[]>(this.facade.$filter());
+  readonly transfersFilterControl = new FormControl<TransferFilter>(this.facade.$filter());
 
   constructor() {
+    this.syncFilterFromStore();
     this.listenTableFilterChange();
+  }
+
+  private syncFilterFromStore(): void {
+    effect(() => {
+      const filterValue = this.facade.$filter();
+      // Only update if the value is different to avoid circular updates
+      if (this.transfersFilterControl.value !== filterValue) {
+        this.transfersFilterControl.setValue(filterValue, { emitEvent: false });
+      }
+    });
   }
 
   private listenTableFilterChange(): void {

@@ -2,6 +2,7 @@ import { Injectable, computed, inject } from '@angular/core';
 import { take } from 'rxjs';
 import { TransfersClient } from '../../../core/api/clients/transfers.client';
 import { TransfersStore } from './transfers.store';
+import { TransferFilter } from '../models/filter.type';
 
 @Injectable()
 export class TransfersFacade {
@@ -15,7 +16,7 @@ export class TransfersFacade {
   readonly $chartData = computed(() => this.store.chartPoints().map(point => point.value));
   readonly $chartLabels = computed(() => this.store.chartPoints().map(point => point.label));
 
-  updateTransferFilter(filter: string[]): void {
+  updateTransferFilter(filter: TransferFilter): void {
     this.store.updateTransferFilter(filter);
   }
 
