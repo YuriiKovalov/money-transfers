@@ -28,66 +28,56 @@ import { IconDirective } from '../../../../directives/icon.directive';
 export class TableFilter extends SignalControlValueAccessor<string[]> {
   readonly $options = input.required<string[]>({ alias: 'options' });
 
-  private readonly selectedValues = signal<string[]>([]);
+  private readonly $selectedValue = signal<string | null>(null);
 
-  readonly isAllActive = computed(() => {
-    const selectedCount = this.selectedValues().length;
-    const total = this.$options().length;
-    return selectedCount === 0 || selectedCount === total;
+  readonly $isAllActive = computed(() => {
+    return this.$selectedValue() === null;
   });
 
-  readonly activeValues = computed(() => {
-    const explicit = this.selectedValues();
-    if (explicit.length === 0 || explicit.length === this.$options().length) {
+  readonly $activeValues = computed(() => {
+    const selected = this.$selectedValue();
+    if (selected === null) {
       return this.$options();
     }
-    return explicit;
+
+    return [selected];
   });
 
   writeValue(value: string[] | null): void {
     if (!value || value.length === 0) {
-      this.selectedValues.set([]);
+      this.$selectedValue.set(null);
       return;
     }
 
     const allowed = new Set(this.$options());
-    const filtered = value.filter(v => allowed.has(v));
+    const firstAllowed = value.find(v => allowed.has(v));
 
-    if (filtered.length === 0 || filtered.length === this.$options().length) {
-      this.selectedValues.set([]);
+    if (!firstAllowed || value.length === this.$options().length) {
+      this.$selectedValue.set(null);
     } else {
-      this.selectedValues.set(filtered);
+      this.$selectedValue.set(firstAllowed);
     }
   }
 
   onAllClick(): void {
-    this.selectedValues.set([]);
+    this.$selectedValue.set(null);
     this.emitChange();
   }
 
   onOptionToggle(value: string): void {
-    const current = this.selectedValues();
-    let next: string[];
+    const current = this.$selectedValue();
 
-    if (current.includes(value)) {
-      next = current.filter(v => v !== value);
+    if (current === value) {
+      this.$selectedValue.set(null);
     } else {
-      next = [...current, value];
-    }
-
-    const total = this.$options().length;
-
-    if (next.length === 0 || next.length === total) {
-      this.selectedValues.set([]);
-    } else {
-      this.selectedValues.set(next);
+      this.$selectedValue.set(value);
     }
 
     this.emitChange();
   }
 
   private emitChange(): void {
-    const value = this.activeValues();
+    const value = this.$activeValues();
     this.emitValue(value);
   }
 }
